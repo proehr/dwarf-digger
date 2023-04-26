@@ -13,6 +13,11 @@ A dwarf gambled away and paid with his life, his dwarf girlfriend starts digging
 
 All development guidelines and code conventions are documented in a separate [Google Doc](https://docs.google.com/document/d/1l3P7bpEN0yeGi0sGK1U5gGEetUNvlyrMnIcIYZWPNGc/edit?usp=sharing).
 
+### Git Workflow
+
+We will be working with a feature branch workflow without squashing and rebasing. Simply merge main into the branch you
+are working on if necessary ([Gitlab Description](https://docs.gitlab.com/ee/gitlab-basics/feature_branch_workflow.html))
+
 ## The Team
 
 * [Paul Höppner](https://github.com/papitz)
