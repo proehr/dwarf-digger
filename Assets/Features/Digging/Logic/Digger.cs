@@ -17,12 +17,12 @@ namespace Features.Digging.Logic
 
         private void Awake()
         {
-            animIdDig = Animator.StringToHash("Dig");
+            animIdDig = Animator.StringToHash("Attack");
             digAnimationLength = animator.runtimeAnimatorController.animationClips
                 .First(clip => clip.name == "Attack (1)").length;
         }
 
-        private void OnDig(InputValue value)
+        private void OnAttack(InputValue value)
         {
             if (canMove.Get() && !isDigging.Get())
             {

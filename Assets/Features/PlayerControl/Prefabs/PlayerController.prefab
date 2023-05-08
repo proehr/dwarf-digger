@@ -252,6 +252,46 @@ PrefabInstance:
       propertyPath: m_TagString
       value: DiggingTool
       objectReference: {fileID: 0}
+    - target: {fileID: 4094089747004544093, guid: 8aed7b2713fc7e649b57190072f50625, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.175
+      objectReference: {fileID: 0}
+    - target: {fileID: 4094089747004544093, guid: 8aed7b2713fc7e649b57190072f50625, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0.175
+      objectReference: {fileID: 0}
+    - target: {fileID: 4094089747004544093, guid: 8aed7b2713fc7e649b57190072f50625, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 0.175
+      objectReference: {fileID: 0}
+    - target: {fileID: 4094089747004544093, guid: 8aed7b2713fc7e649b57190072f50625, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.00495
+      objectReference: {fileID: 0}
+    - target: {fileID: 4094089747004544093, guid: 8aed7b2713fc7e649b57190072f50625, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4094089747004544093, guid: 8aed7b2713fc7e649b57190072f50625, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4094089747004544093, guid: 8aed7b2713fc7e649b57190072f50625, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4094089747004544093, guid: 8aed7b2713fc7e649b57190072f50625, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4094089747004544093, guid: 8aed7b2713fc7e649b57190072f50625, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 180
+      objectReference: {fileID: 0}
+    - target: {fileID: 4094089747004544093, guid: 8aed7b2713fc7e649b57190072f50625, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 180
+      objectReference: {fileID: 0}
     - target: {fileID: 4097392817348901254, guid: 8aed7b2713fc7e649b57190072f50625, type: 3}
       propertyPath: m_RootOrder
       value: 2
@@ -313,8 +353,8 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 4090422170653196773, guid: 8aed7b2713fc7e649b57190072f50625, type: 3}
   m_PrefabInstance: {fileID: 8712471388661707960}
   m_PrefabAsset: {fileID: 0}
---- !u!65 &8359718867364235323
-BoxCollider:
+--- !u!64 &7531715204937354706
+MeshCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -323,9 +363,10 @@ BoxCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 1
   m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 0.0015, y: 0.009, z: 0.003}
-  m_Center: {x: 0, y: 0, z: 0}
+  serializedVersion: 4
+  m_Convex: 1
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 4300000, guid: 06033faff6ed98c4292f7a342b048834, type: 3}
 --- !u!114 &1948923006833342554
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -339,6 +380,20 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isDigging: {fileID: 11400000, guid: e19c673e25189d847887e667544275b6, type: 2}
+--- !u!114 &4267755801505317282
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4624339043415881053}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c598d7cbd63e4ccf816fb7395dce0460, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  animationName: Attack (1)
+  animationTriggerName: Attack
 --- !u!4 &4626383876673899838 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4097392817348901254, guid: 8aed7b2713fc7e649b57190072f50625, type: 3}
@@ -349,6 +404,54 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 3717455008696967996, guid: 8aed7b2713fc7e649b57190072f50625, type: 3}
   m_PrefabInstance: {fileID: 8712471388661707960}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1343427119787546170
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5440321082476091268}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 09b60599b4a64f689797da7006df2c82, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  combatantGroup: 0
+  initialAttackStats:
+    attackSpeed: 0.75
+    attackDamage: 1
+    attackCooldown: 0
+  currentAttackStats:
+    attackSpeed: 0
+    attackDamage: 0
+    attackCooldown: 0
+  initialHealthStats:
+    health:
+      value: 2
+      valueVariable: {fileID: 0}
+    maxHealth:
+      value: 2
+      valueVariable: {fileID: 0}
+  currentHealthStats:
+    health:
+      value: 0
+      valueVariable: {fileID: 0}
+    maxHealth:
+      value: 0
+      valueVariable: {fileID: 0}
+  animator: {fileID: 1644969774155028292}
+  tool: {fileID: 4267755801505317282}
+  initialMovementStats:
+    maximumMovementSpeed:
+      value: 2
+      valueVariable: {fileID: 11400000, guid: bee5ba75b3433cd4bb14e11788271ae2, type: 2}
+    movementCooldown: 0
+  currentMovementStats:
+    maximumMovementSpeed:
+      value: 0
+      valueVariable: {fileID: 0}
+    movementCooldown: 0
+  canMove: {fileID: 11400000, guid: 42bf32237d9fd834fa311371b764702a, type: 2}
 --- !u!114 &8377603249649566479
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -364,3 +467,17 @@ MonoBehaviour:
   animator: {fileID: 1644969774155028292}
   isDigging: {fileID: 11400000, guid: e19c673e25189d847887e667544275b6, type: 2}
   canMove: {fileID: 11400000, guid: 42bf32237d9fd834fa311371b764702a, type: 2}
+--- !u!136 &5311483895489289534
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5440321082476091268}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  m_Radius: 0.3
+  m_Height: 1.4
+  m_Direction: 1
+  m_Center: {x: 0, y: 0.7, z: 0}
