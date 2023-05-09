@@ -158,7 +158,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1832703340118986097, guid: f96b54cfc28cb9a47b1644f9f9fde0dc, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 1832703340118986097, guid: f96b54cfc28cb9a47b1644f9f9fde0dc, type: 3}
       propertyPath: m_LocalPosition.y
@@ -166,7 +166,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1832703340118986097, guid: f96b54cfc28cb9a47b1644f9f9fde0dc, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 2.5
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1832703340118986097, guid: f96b54cfc28cb9a47b1644f9f9fde0dc, type: 3}
       propertyPath: m_LocalRotation.w
@@ -472,6 +472,17 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f63d3e1464232e84ead5e92878328f45, type: 3}
+--- !u!114 &1934248490 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1948923006833342554, guid: f63d3e1464232e84ead5e92878328f45, type: 3}
+  m_PrefabInstance: {fileID: 1928693814}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bbfb0ca0581b47a394a7dd5145b75e64, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &6945527974891786272
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -540,6 +551,10 @@ PrefabInstance:
       propertyPath: player
       value: 
       objectReference: {fileID: 0}
+    - target: {fileID: 8750054947347986390, guid: b1c46262b13e3834eb3b85f11a6c8499, type: 3}
+      propertyPath: diggingTool
+      value: 
+      objectReference: {fileID: 1934248490}
     - target: {fileID: 8750054947347986390, guid: b1c46262b13e3834eb3b85f11a6c8499, type: 3}
       propertyPath: playerCombatComponent
       value: 

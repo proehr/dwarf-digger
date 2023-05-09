@@ -9,7 +9,8 @@ public class StateHandler : MonoBehaviour {
     [SerializeField] private IntVariable enemyCount;
 
     [SerializeField]  private PlayerCombatParticipant playerCombatComponent;
-    [SerializeField]  private Digger playerDiggingComponent;
+   // [SerializeField]  private Digger playerDiggingComponent;
+    [SerializeField] private DiggingTool diggingTool;
     
     private GameState currentGameState;
     private GameState oldGameState;
@@ -24,6 +25,7 @@ public class StateHandler : MonoBehaviour {
     }
 
     private void CheckEnemyCount() {
+        Debug.Log("Enemy Count: " + enemyCount.Get());
         SetGameState(enemyCount.Get() > 0 ? GameState.COMBAT : GameState.DIGGING);
     }
 
@@ -32,12 +34,14 @@ public class StateHandler : MonoBehaviour {
         if (currentGameState == oldGameState) return;
         switch (currentGameState) {
             case GameState.DIGGING:
-                playerCombatComponent.enabled = false;
-                playerDiggingComponent.enabled = true; 
+               // playerCombatComponent.enabled = false;
+               // playerDiggingComponent.enabled = true;
+               diggingTool.enabled = true;
                 break;
             case GameState.COMBAT:
-                playerCombatComponent.enabled = true;
-                playerDiggingComponent.enabled = false;
+                //playerCombatComponent.enabled = true;
+                //playerDiggingComponent.enabled = false;
+                diggingTool.enabled = false;
                 break;
             default:
                 break;
