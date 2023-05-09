@@ -13,7 +13,7 @@ namespace Features.Digging.Logic
             StartCoroutine(DestroyAfterTime());
         }
 
-        private IEnumerator DestroyAfterTime()
+        protected virtual IEnumerator DestroyAfterTime() //Geändert von private zu protected
         {
             yield return new WaitForSeconds(diggableObjectData.DestructionTimeInSeconds);
             Destroy(gameObject);
