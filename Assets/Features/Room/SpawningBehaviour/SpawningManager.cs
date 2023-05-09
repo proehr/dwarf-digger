@@ -10,7 +10,7 @@
         public SpawningManagerData ManagerData => managerData;
 
         public void OnSpawn(int numToSpawn, List<Vector3> area) {
-            List<GameObject> spawnedMonsters = managerData.SpawnedMonsters;
+            List<GameObject> spawnedMonsters = managerData.SpawnedMonsters; 
             spawnedMonsters.Clear();
             for (int i = 0; i < numToSpawn; i++) {
                 GameObject spawnedEntity = Instantiate(managerData.TestSpawnableEntity, new Vector3(0, 0, 0), Quaternion.identity);

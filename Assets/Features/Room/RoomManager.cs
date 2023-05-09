@@ -26,7 +26,7 @@ public class RoomManager : MonoBehaviour {
         roomData.RoomOpened.Set(true); //I guess der Raum kann potentiell mehr als einen Eingang haben aber der Ablauf soll nur einmal durchgeführt werden
     }
 
-    private void HandleDespawnListeners(List<GameObject> monsters) {
+    private void HandleDespawnListeners(List<GameObject> monsters) { 
         Debug.Log("Handle Despawn Listener List length: " + monsters.Count);
         foreach (var monsterCombatParticipant in monsters.Select(currentMonster => currentMonster.GetComponent<AbstractCombatParticipant>()).Where(monsterCombatParticipant => monsterCombatParticipant)) {
             Debug.Log("Participant: " + monsterCombatParticipant.name);
