@@ -28,6 +28,7 @@ public class StateHandler : MonoBehaviour {
     }
 
     private void OnStateChange() {
+        Debug.Log("Current State on Change: " + currentGameState);
         if (currentGameState == oldGameState) return;
         switch (currentGameState) {
             case GameState.DIGGING:
@@ -46,6 +47,7 @@ public class StateHandler : MonoBehaviour {
 
     private void SetGameState(GameState newState) {
         this.currentGameState = newState;
+        Debug.Log("Current State after Switching: " + newState);
         OnStateChange();
     }
 }

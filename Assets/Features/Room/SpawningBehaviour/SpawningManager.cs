@@ -12,7 +12,7 @@
         public void OnSpawn(int numToSpawn, List<Vector3> area) {
             List<GameObject> spawnedMonsters = managerData.SpawnedMonsters;
             for (int i = 0; i < numToSpawn; i++) {
-                GameObject spawnedEntity = Instantiate(managerData.TestSpawnableEntity, area[0], Quaternion.identity);
+                GameObject spawnedEntity = Instantiate(managerData.TestSpawnableEntity, new Vector3(0, 0, 0), Quaternion.identity);
                 spawnedMonsters.Add(spawnedEntity);                
             }
             //TODO Spawn logic überdenken (Wer setzt den EnemyCount? SpawningManager oder RoomManager? Und wann?)

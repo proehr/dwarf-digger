@@ -27,7 +27,9 @@ public class RoomManager : MonoBehaviour {
     }
 
     private void HandleDespawnListeners(List<GameObject> monsters) {
+        Debug.Log("Handle Despawn Listener List length: " + monsters.Count);
         foreach (var monsterCombatParticipant in monsters.Select(currentMonster => currentMonster.GetComponent<AbstractCombatParticipant>()).Where(monsterCombatParticipant => monsterCombatParticipant)) {
+            Debug.Log("Participant: " + monsterCombatParticipant.name);
             monsterCombatParticipant.deathListeners += OnMonsterDespawn;
         }
     }
