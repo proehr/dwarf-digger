@@ -1,9 +1,10 @@
 ﻿namespace Features.Room.SpawningBehaviour {
+    using System;
     using System.Collections.Generic;
     using UnityEngine;
 
-    [CreateAssetMenu(fileName = "SpawningManagerData", menuName = "Features/SpawningBehaviour/SpawningManagerData")]
-    public class SpawningManagerData : ScriptableObject {
+    [Serializable]
+    public class SpawningManagerData {
         [SerializeField] private List<GameObject> spawnableEntities;
         [SerializeField] private GameObject testSpawnableEntity;
         private List<GameObject> spawnedMonsters = new List<GameObject>();

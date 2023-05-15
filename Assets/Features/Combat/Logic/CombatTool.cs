@@ -23,6 +23,10 @@ namespace Features.Combat.Logic
             animationTriggerId = Animator.StringToHash(animationTriggerName);
         }
 
+        public void Start() {
+            
+        }
+
         protected internal abstract void ApplyAttackEffects(AbstractCombatParticipant target);
     }
 }

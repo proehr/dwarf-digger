@@ -3,15 +3,14 @@
     using Combat.Logic;
     using UnityEngine;
     
-    [CreateAssetMenu(fileName = "SpawningManager", menuName = "Features/SpawningBehaviour/SpawningManager")]
-    public class SpawningManager : ScriptableObject {
+    
+    public class SpawningManager : MonoBehaviour {
         [SerializeField] private SpawningManagerData managerData;
 
         public SpawningManagerData ManagerData => managerData;
 
-        public void OnSpawn(int numToSpawn, List<Vector3> area) {
-            List<GameObject> spawnedMonsters = managerData.SpawnedMonsters; 
-            spawnedMonsters.Clear();
+        public void OnSpawn(int numToSpawn, GameObject parent) {
+            List<GameObject> spawnedMonsters = managerData.SpawnedMonsters;
             for (int i = 0; i < numToSpawn; i++) {
                 GameObject spawnedEntity = Instantiate(managerData.TestSpawnableEntity, new Vector3(0, 0, 0), Quaternion.identity);
                 spawnedMonsters.Add(spawnedEntity);                

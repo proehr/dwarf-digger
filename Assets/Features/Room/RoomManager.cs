@@ -5,11 +5,14 @@ using System.Linq;
 using Common.Logic.Variables;
 using Features.Combat.Logic;
 using Features.Room;
+using Features.Room.SpawningBehaviour;
 using UnityEngine;
 
 public class RoomManager : MonoBehaviour {
 
     [SerializeField] private RoomData roomData;
+    [SerializeField] private SpawningManager spawningManager;
+    private Action<RoomData> action;
     public void Awake() {
         //TODO Spawn Enemies in room Boundries (maybe idk)
     }
@@ -18,8 +21,8 @@ public class RoomManager : MonoBehaviour {
     public void OnWallBreak() {
         if (roomData.RoomOpened.Get()) return;
         
-        roomData.SpawningManager.OnSpawn(roomData.RoomEnemyCount, roomData.RoomDimension); //TODO Zeile maybe in Awake schieben
-        roomData.StateManagerEnemyCount.Set(roomData.RoomEnemyCount);
+        roomData.SpawningManager.OnSpawn(roomData.RoomEnemyCount, gameObject); //TODO Zeile maybe in Awake schieben
+        roomData.StateManagerEnemyCount.Add(roomData.RoomEnemyCount);
         
         HandleDespawnListeners(roomData.SpawningManager.ManagerData.SpawnedMonsters);
         

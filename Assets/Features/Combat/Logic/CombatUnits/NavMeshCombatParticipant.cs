@@ -24,7 +24,7 @@ namespace Features.Combat.Logic.CombatUnits
         protected override void Awake()
         {
             base.Awake();
-            SetTarget(target);
+            //SetTarget(target);
             agent.speed = currentMovementStats.MaximumMovementSpeed;
         }
 
@@ -50,6 +50,7 @@ namespace Features.Combat.Logic.CombatUnits
                 initialTarget = targetParticipant;
             }
             target = targetParticipant;
+            Debug.Log("Init Target: " + initialTarget + " Target: " + target);
             target.deathListeners += ResetTarget;
             agent.destination = target.transform.position;
         }
