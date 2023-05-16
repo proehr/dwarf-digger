@@ -22,7 +22,7 @@ namespace Features.PlayerControl.Logic
                 camera.farClipPlane);
             var s = zScale / orthoHeight;
             m[0, 2] = +s * Mathf.Sin(Mathf.Deg2Rad * -angle);
-            m[1, 2] = -s * Mathf.Cos(Mathf.Deg2Rad * -angle);
+            m[1, 2] = +s * Mathf.Cos(Mathf.Deg2Rad * -angle);
             m[0, 3] = -zOffset * m[0, 2];
             m[1, 3] = -zOffset * m[1, 2];
             camera.projectionMatrix = m;
