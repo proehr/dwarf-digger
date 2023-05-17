@@ -1,12 +1,13 @@
-using System;
 using UnityEngine;
 
 namespace Features.PlayerControl.Logic
 {
+    [ExecuteInEditMode]
     public class CabinetProjection : MonoBehaviour
     {
         [SerializeField] private Camera camera;
-        [SerializeField] public float angle = 45.0f;
+        [SerializeField] public float alpha = 55.0f;
+        [SerializeField] public float beta = 45.0f;
         [SerializeField] public float zScale = 0.5f;
         [SerializeField] public float zOffset = 0.0f;
 
@@ -15,14 +16,19 @@ namespace Features.PlayerControl.Logic
         // Start is called before the first frame update
         private void Start()
         {
+            Apply();
+        }
+
+        private void Apply()
+        {
             camera.orthographic = true;
             var orthoHeight = camera.orthographicSize;
             var orthoWidth = camera.aspect * orthoHeight;
             var m = Matrix4x4.Ortho(-orthoWidth, orthoWidth, -orthoHeight, orthoHeight, camera.nearClipPlane,
                 camera.farClipPlane);
             var s = zScale / orthoHeight;
-            m[0, 2] = +s * Mathf.Sin(Mathf.Deg2Rad * -angle);
-            m[1, 2] = +s * Mathf.Cos(Mathf.Deg2Rad * -angle);
+            m[0, 2] = -s * Mathf.Cos(Mathf.Deg2Rad * -alpha) / Mathf.Tan(Mathf.Deg2Rad * beta);
+            m[1, 2] = s * Mathf.Sin(Mathf.Deg2Rad * -alpha) / Mathf.Tan(Mathf.Deg2Rad * beta);
             m[0, 3] = -zOffset * m[0, 2];
             m[1, 3] = -zOffset * m[1, 2];
             camera.projectionMatrix = m;
@@ -41,6 +47,7 @@ namespace Features.PlayerControl.Logic
         // Update is called once per frame
         void Update()
         {
+            Apply();
         }
     }
 }
