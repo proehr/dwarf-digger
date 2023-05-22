@@ -12,3 +12,10 @@ namespace Features.PlayerControl.Logic {
         }
     }
 }
+
+        public void OnAttack(InputValue value) {
+            Debug.Log("TRiggered");
+            this.onAttack?.Invoke();
+        }
+    }
+}
