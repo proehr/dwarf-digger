@@ -6,10 +6,16 @@ using UnityEngine.InputSystem;
 
 namespace Features.Combat.Logic.CombatUnits
 {
+    using PlayerControl.Logic;
+    using StateSwitch.Logic;
+
     [RequireComponent(typeof(PlayerInput))]
     public class PlayerCombatParticipant : MovingCombatParticipant
     {
         [SerializeField] private BoolVariable canMove;
+        [SerializeField] private InputHandler handler;
+
+        private GameState currentPlayerState;
 
         private void Update()
         {
@@ -37,13 +43,24 @@ namespace Features.Combat.Logic.CombatUnits
             }
         }
 
-        private void OnAttack()
+        private void StartAttack()
         {
             if (currentAttackStats.AttackCooldown <= 0)
             {
                 Attack();
                 canMove.SetFalse();
             }
+        }
+
+        public void OnEnable() {
+            tool.enabled = true;
+            handler.onAttack += StartAttack;
+        }
+
+        public void OnDisable() {
+            canMove.SetTrue();
+            tool.enabled = false;
+            handler.onAttack -= StartAttack;
         }
     }
 }

@@ -27,6 +27,7 @@ namespace Common.Logic.Variables
 
         public void Set(T value)
         {
+            Debug.Log("Set Variable value: " + value);
             if (value.Equals(runtimeValue)) return;
             
             runtimeValue = value;
