@@ -54,12 +54,8 @@ namespace Features.Combat.Logic
         protected virtual void Attack()
         {
             ApplyAttackCooldown(1 / currentAttackStats.AttackSpeed);
-            StartCoroutine(CheckForHit());
         }
-
-        protected abstract IEnumerator CheckForHit(); 
         
-
         public void ApplyAttackCooldown(float time)
         {
             currentAttackStats.AttackCooldown = Math.Max(currentAttackStats.AttackCooldown, time);

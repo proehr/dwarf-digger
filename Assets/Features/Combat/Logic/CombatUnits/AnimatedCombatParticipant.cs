@@ -34,8 +34,8 @@ namespace Features.Combat.Logic.CombatUnits
             StartCoroutine(CheckForHit());
             StartCoroutine(StopUse());
         }
-        
-        protected override IEnumerator CheckForHit()
+
+        private IEnumerator CheckForHit()
         {
             yield return new WaitForSeconds(tool.hitDetectionDelayInSeconds);
             if (Physics.Raycast(transform.position + Vector3.up * tool.hitHeight,
@@ -53,7 +53,6 @@ namespace Features.Combat.Logic.CombatUnits
         protected virtual IEnumerator StopUse()
         {
             yield return new WaitForSeconds(tool.animationLength);
-            isAttacking = false;
         }
     }
 }
