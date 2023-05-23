@@ -13,10 +13,9 @@ GameObject:
   - component: {fileID: 1832703340118986099}
   - component: {fileID: 1832703340118986098}
   - component: {fileID: 1832703340118986110}
-  - component: {fileID: 1832703340118986111}
   m_Layer: 0
   m_Name: DiggableObject
-  m_TagString: Diggable
+  m_TagString: DirtDiggableObject
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -115,16 +114,3 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
---- !u!114 &1832703340118986111
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1832703340118986100}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 35bfbdc23d734b0cb135563ad623f35f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  diggableObjectData: {fileID: 11400000, guid: ef9855e019e701d42a80f1e160e3c29f, type: 2}

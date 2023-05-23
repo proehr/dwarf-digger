@@ -136,27 +136,13 @@ GameObject:
   - component: {fileID: 261237227}
   - component: {fileID: 261237226}
   - component: {fileID: 261237225}
-  - component: {fileID: 261237224}
   m_Layer: 0
   m_Name: Cube (1)
-  m_TagString: Diggable
+  m_TagString: DirtDiggableObject
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &261237224
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 261237223}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 35bfbdc23d734b0cb135563ad623f35f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  diggableObjectData: {fileID: 11400000, guid: ef9855e019e701d42a80f1e160e3c29f, type: 2}
 --- !u!54 &261237225
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -264,27 +250,13 @@ GameObject:
   - component: {fileID: 1561494401}
   - component: {fileID: 1561494400}
   - component: {fileID: 1561494399}
-  - component: {fileID: 1561494398}
   m_Layer: 0
   m_Name: Cube (2)
-  m_TagString: Diggable
+  m_TagString: DirtDiggableObject
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &1561494398
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1561494397}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 35bfbdc23d734b0cb135563ad623f35f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  diggableObjectData: {fileID: 11400000, guid: ef9855e019e701d42a80f1e160e3c29f, type: 2}
 --- !u!54 &1561494399
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -656,6 +628,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 726028561972768387, guid: f63d3e1464232e84ead5e92878328f45, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 3.8460002
+      objectReference: {fileID: 0}
     - target: {fileID: 6208373595885750640, guid: f63d3e1464232e84ead5e92878328f45, type: 3}
       propertyPath: m_RootOrder
       value: 2
@@ -700,9 +676,68 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7678235331972990380, guid: f63d3e1464232e84ead5e92878328f45, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 3.8460002
+      objectReference: {fileID: 0}
     - target: {fileID: 8204127489826038990, guid: f63d3e1464232e84ead5e92878328f45, type: 3}
       propertyPath: m_Name
       value: PlayerController
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    - target: {fileID: 8377603249649566479, guid: f63d3e1464232e84ead5e92878328f45, type: 3}
+      propertyPath: hitHeight
+      value: 0.7
+      objectReference: {fileID: 0}
+    - target: {fileID: 8377603249649566479, guid: f63d3e1464232e84ead5e92878328f45, type: 3}
+      propertyPath: maxHitDistance
+      value: 0.75
+      objectReference: {fileID: 0}
+    - target: {fileID: 8377603249649566479, guid: f63d3e1464232e84ead5e92878328f45, type: 3}
+      propertyPath: hitDetectionDelayInSeconds
+      value: 0.249
+      objectReference: {fileID: 0}
+    - target: {fileID: 8377603249649566479, guid: f63d3e1464232e84ead5e92878328f45, type: 3}
+      propertyPath: diggableObjectDatas.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8377603249649566479, guid: f63d3e1464232e84ead5e92878328f45, type: 3}
+      propertyPath: diggableObjectDatas.Array.data[0].hitFx
+      value: 
+      objectReference: {fileID: 8667032122431407534, guid: 061165f649d0d53409e909335f77ba49, type: 3}
+    - target: {fileID: 8377603249649566479, guid: f63d3e1464232e84ead5e92878328f45, type: 3}
+      propertyPath: diggableObjectDatas.Array.data[1].hitFx
+      value: 
+      objectReference: {fileID: 8667032122431407534, guid: 061165f649d0d53409e909335f77ba49, type: 3}
+    - target: {fileID: 8377603249649566479, guid: f63d3e1464232e84ead5e92878328f45, type: 3}
+      propertyPath: diggableObjectDatas.Array.data[2].hitFx
+      value: 
+      objectReference: {fileID: 8667032122431407534, guid: 061165f649d0d53409e909335f77ba49, type: 3}
+    - target: {fileID: 8377603249649566479, guid: f63d3e1464232e84ead5e92878328f45, type: 3}
+      propertyPath: diggableObjectDatas.Array.data[0].assignedTag
+      value: DirtDiggableObject
+      objectReference: {fileID: 0}
+    - target: {fileID: 8377603249649566479, guid: f63d3e1464232e84ead5e92878328f45, type: 3}
+      propertyPath: diggableObjectDatas.Array.data[1].assignedTag
+      value: DirtDiggableObject
+      objectReference: {fileID: 0}
+    - target: {fileID: 8377603249649566479, guid: f63d3e1464232e84ead5e92878328f45, type: 3}
+      propertyPath: diggableObjectDatas.Array.data[2].assignedTag
+      value: DirtDiggableObject
+      objectReference: {fileID: 0}
+    - target: {fileID: 8377603249649566479, guid: f63d3e1464232e84ead5e92878328f45, type: 3}
+      propertyPath: diggableObjectDatas.Array.data[0].destructionTimeInSeconds
+      value: 0.25
+      objectReference: {fileID: 0}
+    - target: {fileID: 8377603249649566479, guid: f63d3e1464232e84ead5e92878328f45, type: 3}
+      propertyPath: diggableObjectDatas.Array.data[1].destructionTimeInSeconds
+      value: 0.05
+      objectReference: {fileID: 0}
+    - target: {fileID: 8377603249649566479, guid: f63d3e1464232e84ead5e92878328f45, type: 3}
+      propertyPath: diggableObjectDatas.Array.data[2].destructionTimeInSeconds
+      value: 0.05
+      objectReference: {fileID: 0}
+    m_RemovedComponents:
+    - {fileID: 1343427119787546170, guid: f63d3e1464232e84ead5e92878328f45, type: 3}
+    - {fileID: 1948923006833342554, guid: f63d3e1464232e84ead5e92878328f45, type: 3}
+    - {fileID: 4267755801505317282, guid: f63d3e1464232e84ead5e92878328f45, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: f63d3e1464232e84ead5e92878328f45, type: 3}

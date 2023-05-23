@@ -1,6 +1,6 @@
 ﻿using System;
+using System.Collections;
 using Common.Logic.Variables;
-using StarterAssets;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -13,15 +13,6 @@ namespace Features.Combat.Logic.CombatUnits
 
         private void Update()
         {
-            if (isAttacking)
-            {
-                canMove.SetFalse();
-            }
-            else
-            {
-                canMove.SetTrue();
-            }
-            
             if (currentAttackStats.AttackCooldown > 0)
             {
                 currentAttackStats.AttackCooldown = Math.Max(currentAttackStats.AttackCooldown - Time.deltaTime, 0);
@@ -39,11 +30,17 @@ namespace Features.Combat.Logic.CombatUnits
 
         private void OnAttack()
         {
-            if (currentAttackStats.AttackCooldown <= 0)
+            if (canMove.Get() && currentAttackStats.AttackCooldown <= 0)
             {
                 Attack();
                 canMove.SetFalse();
             }
+        }
+
+        protected override IEnumerator StopUse()
+        {
+            yield return StartCoroutine(base.StopUse());
+            canMove.SetTrue();
         }
     }
 }

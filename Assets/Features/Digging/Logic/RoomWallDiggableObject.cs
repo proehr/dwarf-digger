@@ -1,15 +1,14 @@
-﻿namespace Features.Digging.Logic {
-    using System;
-    using System.Collections;
-    using UnityEngine;
+﻿using UnityEngine;
 
-    public class RoomWallDiggableObject : DiggableObject {
+namespace Features.Digging.Logic {
+
+    public class RoomWallDiggableObject : MonoBehaviour{
         //TODO System bauen dass jedem RoomWallDiggableObject den jeweils dazugehörigen Raum beim Bau der Szene zuweist
         //(Maybe nützlich beim generieren von Ebenen)
         [SerializeField] private RoomManager roomManager;
-        
-        protected override IEnumerator DestroyAfterTime() {
-            yield return base.DestroyAfterTime();
+
+        private void OnDestroy()
+        {
             roomManager.OnWallBreak();
         }
     }

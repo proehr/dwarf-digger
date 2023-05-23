@@ -1,9 +1,5 @@
 ﻿using System;
 using System.Collections;
-using System.Collections.Generic;
-using System.Linq;
-using Features.Combat.Logic.CombatUnits;
-using MyBox;
 using UnityEngine;
 
 namespace Features.Combat.Logic
@@ -19,30 +15,12 @@ namespace Features.Combat.Logic
         [SerializeField] protected internal HealthStats initialHealthStats;
         [SerializeField] protected internal HealthStats currentHealthStats;
 
-        protected bool isAttacking;
-
         protected internal Action<AbstractCombatParticipant> deathListeners;
 
         protected virtual void Awake()
         {
             currentAttackStats = initialAttackStats;
             currentHealthStats = initialHealthStats;
-        }
-
-        protected virtual void OnTriggerEnter(Collider other)
-        {
-            CombatTool combatTool = other.GetComponent<CombatTool>();
-            if (combatTool && combatTool.user.combatantGroup != combatantGroup && combatTool.user.isAttacking)
-            {
-                combatTool.ApplyAttackEffects(this);
-            }
-            
-            // TODO this should be moved somewhere else. Reconsider the whole collision logic in combat
-            AggroPullHelper aggroPullHelper = other.GetComponent<AggroPullHelper>();
-            if (aggroPullHelper)
-            {
-                aggroPullHelper.AddTarget(this);
-            }
         }
 
         protected internal virtual void ReceiveAttack(AbstractCombatParticipant source, params AttackEffect[] effects)
@@ -75,9 +53,11 @@ namespace Features.Combat.Logic
 
         protected virtual void Attack()
         {
-            isAttacking = true;
             ApplyAttackCooldown(1 / currentAttackStats.AttackSpeed);
+            StartCoroutine(CheckForHit());
         }
+
+        protected abstract IEnumerator CheckForHit(); 
         
 
         public void ApplyAttackCooldown(float time)

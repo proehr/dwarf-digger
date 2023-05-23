@@ -1,4 +1,3 @@
-using Common.Logic.Event;
 using Common.Logic.Variables;
 using Features.Combat.Logic.CombatUnits;
 using Features.Digging.Logic;
@@ -10,8 +9,8 @@ public class StateHandler : MonoBehaviour {
 
     [SerializeField] private PlayerCombatParticipant playerCombatComponent;
 
-    // [SerializeField]  private Digger playerDiggingComponent;
-    [SerializeField] private DiggingTool diggingTool;
+    [SerializeField]  private Digger playerDiggingComponent;
+    //[SerializeField] private DiggingTool diggingTool;
 
     private GameState currentGameState;
     private GameState oldGameState;
@@ -36,13 +35,13 @@ public class StateHandler : MonoBehaviour {
         switch (currentGameState) {
             case GameState.DIGGING:
                 // playerCombatComponent.enabled = false;
-                // playerDiggingComponent.enabled = true;
-                diggingTool.enabled = true;
+                playerDiggingComponent.enabled = true;
+                // diggingTool.enabled = true;
                 break;
             case GameState.COMBAT:
                 //playerCombatComponent.enabled = true;
-                //playerDiggingComponent.enabled = false;
-                diggingTool.enabled = false;
+                playerDiggingComponent.enabled = false;
+                // diggingTool.enabled = false;
                 break;
             default:
                 break;

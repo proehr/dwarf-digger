@@ -19,9 +19,9 @@ namespace Features.Combat.Logic.CombatUnits
             {
                 currentAttackStats.AttackCooldown = Math.Max(currentAttackStats.AttackCooldown - Time.deltaTime, 0);
             }
-            else if (!isAttacking 
-                     && target 
-                     && Vector3.Distance(target.transform.position, transform.position) < maximumAttackDistance)
+            else if (target 
+                     && Vector3.Distance(target.transform.position, transform.position) < maximumAttackDistance
+                     )
             {
                 Attack();
             }
