@@ -59,7 +59,23 @@ namespace Features.Room.Logic {
                 for (int j = 0; j < size; j++) {
                     if (i == 0 && j == 0) continue;
                     Vector3 currentPos = new Vector3(i, 0.5f, j);
-                    Instantiate(worldCoords[i, j] == 1 ? roomWall : diggableObject, currentPos, Quaternion.identity, container.transform);
+                    if (worldCoords[i, j] == 0) {
+                        bool isRoomWall = false;
+                        int left = i - 1;
+                        int right = i + 1;
+                        int up = j + 1;
+                        int down = j - 1;
+
+                        if (left >= 0 && right < size && down >= 0 && up < size) {
+                            if (worldCoords[left, j] == 1 || worldCoords[right, j] == 1 || worldCoords[i, up] == 1 || worldCoords[i, down] == 1) {
+                                Instantiate(roomWall, currentPos, Quaternion.identity, container.transform);
+                                isRoomWall = true;
+                            } 
+                        }
+                        if (!isRoomWall) {
+                            Instantiate(diggableObject, currentPos, Quaternion.identity, container.transform);
+                        }
+                    }
                 }
             }
         }

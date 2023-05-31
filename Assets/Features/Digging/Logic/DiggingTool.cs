@@ -14,7 +14,7 @@ namespace Features.Digging.Logic
         }
 
         private void OnTriggerEnter(Collider other)
-        {   
+        {
             if (isDigging.Get() && other.CompareTag("Diggable") && enabled)
             {
                 Debug.Log("Digging Tool On Trigger Enter");

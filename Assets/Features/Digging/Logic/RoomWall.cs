@@ -11,6 +11,7 @@
         protected override IEnumerator DestroyAfterTime() {
             yield return base.DestroyAfterTime();
             OnWallBreak?.Invoke();
+            Destroy(gameObject);
         }
     }
 }
