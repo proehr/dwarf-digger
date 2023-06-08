@@ -66,9 +66,10 @@ namespace Features.PlayerControl.Logic
         {
             Vector2 rawMoveVector = value.Get<Vector2>();
             currentSpeed = rawMoveVector == Vector2.zero ? 0.0f : playerSpeed.Get();
-            Vector3 skewedMoveVector = new Vector3(rawMoveVector[0], 0, rawMoveVector[1]);
-            Matrix4x4 isoCorrectionMatrix = Matrix4x4.Rotate(Quaternion.Euler(0, 45, 0));
-            moveVector = isoCorrectionMatrix.MultiplyPoint3x4(skewedMoveVector);
+            // Vector3 skewedMoveVector = new Vector3(rawMoveVector[0], 0, rawMoveVector[1]);
+            // Matrix4x4 isoCorrectionMatrix = Matrix4x4.Rotate(Quaternion.Euler(0, 45, 0));
+            // moveVector = isoCorrectionMatrix.MultiplyPoint3x4(skewedMoveVector);
+            moveVector = new Vector3(rawMoveVector[0], 0, rawMoveVector[1]);
             
 
             // animationBlend = Mathf.Lerp(animationBlend, currentSpeed, Time.deltaTime * speedChangeRate);
