@@ -13,7 +13,7 @@ namespace Features.PlayerControl.Logic
 
         [SerializeField] private FloatVariable playerSpeed;
 
-        [SerializeField] public float speedChangeRate = 100.0f;
+        [SerializeField] public float speedChangeRate = 10.0f;
         private Vector3 moveVector;
 
         private bool hasAnimator;
@@ -66,7 +66,10 @@ namespace Features.PlayerControl.Logic
         {
             Vector2 rawMoveVector = value.Get<Vector2>();
             currentSpeed = rawMoveVector == Vector2.zero ? 0.0f : playerSpeed.Get();
-            moveVector = new Vector3(rawMoveVector[0], 0, rawMoveVector[1]);
+            Vector3 skewedMoveVector = new Vector3(rawMoveVector[0], 0, rawMoveVector[1]);
+            Matrix4x4 isoCorrectionMatrix = Matrix4x4.Rotate(Quaternion.Euler(0, 45, 0));
+            moveVector = isoCorrectionMatrix.MultiplyPoint3x4(skewedMoveVector);
+            
 
             // animationBlend = Mathf.Lerp(animationBlend, currentSpeed, Time.deltaTime * speedChangeRate);
             animationBlend = currentSpeed;
