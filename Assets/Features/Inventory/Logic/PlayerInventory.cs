@@ -1,23 +1,21 @@
 ﻿using UnityEngine;
 
 namespace Features.Inventory.Logic {
-    //Vllt als Singleton machen?
-    public class PlayerInventory : MonoBehaviour {
-        [SerializeField] private int maxInventorySize;
+    using Unity.VisualScripting;
 
+    [CreateAssetMenu(fileName = "PlayerInventory", menuName = "Features/Inventory/Logic/PlayerInventory")]
+    public class PlayerInventory : ScriptableObject {
+        [SerializeField] private int maxInventorySize;
         private const int ILLEGAL_SLOT = -1;
         
         internal InventoryItem[] inventory;
         private int selectedIndex;
-        
 
-        public void Awake() {
-            inventory = new InventoryItem[maxInventorySize];
+        public void Awake() { inventory = new InventoryItem[maxInventorySize];
         }
 
-        public void OnInteraction() {
-            if (inventory[selectedIndex] == null) return;
-            inventory[selectedIndex].OnInteraction();
+        public void UseSelectedIndex(Transform playerTransform) {
+            inventory[selectedIndex].Interact(playerTransform);
         }
 
         public void SelectIndex(int index) {

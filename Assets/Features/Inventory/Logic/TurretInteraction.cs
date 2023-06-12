@@ -2,11 +2,12 @@ using UnityEngine;
 
 namespace Features.Inventory.Logic
 {
-    public class TurretInteraction : MonoBehaviour, Interactable
+    public class TurretInteraction : Interactable
     {
-        public void Interact(InventoryItemData data) {
-            GameObject turret = data.Prefab;
-            //TODO Turret and richtige Stelle instanziieren
+        public override void Interact(InventoryItem item, Transform playerTransform) {
+            GameObject turret = item.data.Prefab;
+            Instantiate(turret, playerTransform.position + (playerTransform.forward * 2), Quaternion.identity);
+            item.RemoveFromStack();
         }
     }
 }

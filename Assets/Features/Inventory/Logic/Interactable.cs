@@ -1,5 +1,7 @@
 ﻿namespace Features.Inventory.Logic {
-    public interface Interactable {
-        void Interact(InventoryItemData data);
+    using UnityEngine;
+
+    public abstract class Interactable : MonoBehaviour {
+        public abstract void Interact(InventoryItem item, Transform playerTransform);
     }
 }

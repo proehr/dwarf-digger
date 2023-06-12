@@ -8,6 +8,7 @@ TagManager:
   - DiggingTool
   - Diggable
   - AggroHelper
+  - Item
   layers:
   - Default
   - TransparentFX
