@@ -1,10 +1,10 @@
-﻿namespace Features.Inventory {
-    using System;
-    using UnityEngine;
+﻿using System;
+using UnityEngine;
 
+namespace Features.Inventory.Logic {
     [Serializable]
     public class InventoryItem {
-        [SerializeField] private InventoryItemData data;
+        [SerializeField] public InventoryItemData data { get; }
         [SerializeField] private int currentStackSize;
         [SerializeField] private Interactable interaction;
         

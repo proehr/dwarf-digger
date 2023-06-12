@@ -1,6 +1,6 @@
-﻿namespace Features.Inventory {
-    using UnityEngine;
+﻿using UnityEngine;
 
+namespace Features.Inventory.Logic {
     public class InventoryItemData : ScriptableObject {
         public int Id { get; set; }
         public string ItemName { get; set; }

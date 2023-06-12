@@ -1,19 +1,17 @@
-﻿namespace Features.Inventory {
-    using System;
-    using System.Collections.Generic;
-    using UnityEngine;
+﻿using UnityEngine;
 
+namespace Features.Inventory.Logic {
     //Vllt als Singleton machen?
     public class PlayerInventory : MonoBehaviour {
         [SerializeField] private int maxInventorySize;
 
         private const int ILLEGAL_SLOT = -1;
         
-        private InventoryItem[] inventory;
+        internal InventoryItem[] inventory;
         private int selectedIndex;
         
 
-        public void Start() {
+        public void Awake() {
             inventory = new InventoryItem[maxInventorySize];
         }
 
