@@ -5,22 +5,28 @@ namespace Features.Combat.Logic.CombatUnits
     public class AggroPullHelper : MonoBehaviour
     {
         [SerializeField] protected internal AggroPullingParticipant pullingParticipant;
+        [SerializeField] private CapsuleCollider aggroCollider;
 
-        private void OnCollisionEnter(Collision other)
+        private void Awake()
         {
-            AbstractCombatParticipant target = other.collider.GetComponent<AbstractCombatParticipant>();
+            aggroCollider.radius = pullingParticipant.aggroRange;
+        }
+
+        private void OnTriggerEnter(Collider other)
+        {
+            AbstractCombatParticipant target = other.GetComponent<AbstractCombatParticipant>();
             if (target && target.combatantGroup != pullingParticipant.combatantGroup && !pullingParticipant.targets.Contains(target))
             {
                 NavMeshCombatParticipant navMeshCombatParticipant = target as NavMeshCombatParticipant;
                 if (navMeshCombatParticipant && navMeshCombatParticipant.initialTarget == navMeshCombatParticipant.target)
                 {
-                    
+                    AddTarget(navMeshCombatParticipant);
                 }
-                pullingParticipant.targets.Add(target);
             }
         }
         
         private void OnCollisionExit(Collision other)
+        
         {
             AbstractCombatParticipant target = other.collider.GetComponent<AbstractCombatParticipant>();
             if (target)

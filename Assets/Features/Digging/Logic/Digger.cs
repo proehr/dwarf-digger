@@ -75,9 +75,6 @@ namespace Features.Digging.Logic
         }
 
 #if UNITY_EDITOR
-        /// <summary>
-        /// Draws the links between nodes for editor purposes
-        /// </summary>
         protected void OnDrawGizmos()
         {
             Gizmos.DrawLine(transform.position + Vector3.up * hitHeight,

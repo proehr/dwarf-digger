@@ -39,8 +39,10 @@ namespace Features.Combat.Logic.CombatUnits
         {
             yield return new WaitForSeconds(tool.hitDetectionDelayInSeconds);
             if (Physics.Raycast(transform.position + Vector3.up * tool.hitHeight,
-                    transform.TransformDirection(Vector3.forward), out var hit,
-                    tool.maxHitDistance))
+                    transform.forward,
+                    out var hit,
+                    tool.maxHitDistance
+                ))
             {
                 AbstractCombatParticipant hitCombatParticipant = hit.collider.GetComponent<AbstractCombatParticipant>();
                 if (hitCombatParticipant != null)
@@ -54,5 +56,13 @@ namespace Features.Combat.Logic.CombatUnits
         {
             yield return new WaitForSeconds(tool.animationLength);
         }
+
+#if UNITY_EDITOR
+        protected void OnDrawGizmos()
+        {
+            Gizmos.DrawLine(transform.position + Vector3.up * tool.hitHeight,
+                transform.position + Vector3.up * tool.hitHeight + transform.forward * tool.maxHitDistance);
+        }
+#endif
     }
 }

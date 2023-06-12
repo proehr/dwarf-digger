@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using Features.Combat.Logic.AttackEffects;
 using UnityEngine;
 
@@ -16,21 +17,12 @@ namespace Features.Combat.Logic.CombatUnits
         [SerializeField] private float projectileSpeed;
         [SerializeField] private float attackRange;
         [SerializeField] private float hitDetectionRange;
-        [SerializeField] private float aggroRange;
-        [SerializeField] private CapsuleCollider aggroCollider;
+        [SerializeField] internal float aggroRange;
         [SerializeField] private float rotationSpeed;
-        //TODO: change to raycast: check if projectile is going to hit, then attack
-        [SerializeField] private float maximumAttackAngle;
 
         internal List<AbstractCombatParticipant> targets = new();
         private Vector3 direction;
         private Quaternion lookRotation;
-
-        protected override void Awake()
-        {
-            base.Awake();
-            aggroCollider.radius = aggroRange;
-        }
 
         protected void Update()
         {
@@ -46,7 +38,10 @@ namespace Features.Combat.Logic.CombatUnits
             }
             else if (targets.Count > 0)
             {
-                if (Quaternion.Angle(transform.rotation, lookRotation) < maximumAttackAngle)
+                RaycastHit[] hits = Physics.RaycastAll(transform.position,
+                    transform.forward,
+                    attackRange);
+                if (hits.Any(hit => hit.collider.gameObject == targets[0].gameObject))
                 {
                     Attack();
                 }
@@ -55,6 +50,7 @@ namespace Features.Combat.Logic.CombatUnits
 
         protected override void Attack()
         {
+            base.Attack();
             direction = (targets[0].transform.position - transform.position).normalized;
             lookRotation = Quaternion.LookRotation(direction);
             GameObject projectile = Instantiate(
@@ -69,20 +65,22 @@ namespace Features.Combat.Logic.CombatUnits
         {
             while (Vector3.Distance(projectile.transform.position, initialPosition) < attackRange)
             {
-                transform.position += projectile.transform.forward * (projectileSpeed * Time.deltaTime);
+                projectile.transform.position += projectile.transform.forward * (projectileSpeed * Time.deltaTime);
                 CheckForHit(projectile);
+                yield return null;
             }
-            yield return null;
+            Destroy(projectile);
         }
 
         private void CheckForHit(GameObject projectile)
         {
-            if (Physics.Raycast(projectile.transform.position,
-                    projectile.transform.TransformDirection(Vector3.forward), out var hit,
-                    hitDetectionRange))
+            RaycastHit[] hits = Physics.RaycastAll(projectile.transform.position,
+                projectile.transform.forward,
+                hitDetectionRange);
+            foreach (RaycastHit hit in hits)
             {
                 AbstractCombatParticipant hitCombatParticipant = hit.collider.GetComponent<AbstractCombatParticipant>();
-                if (hitCombatParticipant != null)
+                if (hitCombatParticipant != null && hitCombatParticipant.combatantGroup != combatantGroup)
                 {
                     hitCombatParticipant.ReceiveAttack(this, new DirectDamageEffect(currentAttackStats.AttackDamage));
                 }

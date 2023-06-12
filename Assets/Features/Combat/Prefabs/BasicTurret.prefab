@@ -376,7 +376,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6592191052594870169}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.739, z: 0.595}
+  m_LocalPosition: {x: 0, y: 0.739, z: -0.231}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -443,6 +443,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   pullingParticipant: {fileID: 6945527973947797210}
+  aggroCollider: {fileID: 6945527973561860457}
 --- !u!1 &6945527973947797209
 GameObject:
   m_ObjectHideFlags: 0
@@ -529,10 +530,8 @@ MonoBehaviour:
       valueVariable: {fileID: 0}
   projectileLaunchOrigin: {fileID: 6592191052594870169}
   projectilePrefab: {fileID: 1547843847961140546, guid: 00d073f9c042b7140bf816260a259a98, type: 3}
-  projectileSpeed: 1
+  projectileSpeed: 5
   attackRange: 3
   hitDetectionRange: 0.05
   aggroRange: 3
-  aggroCollider: {fileID: 6945527973561860457}
   rotationSpeed: 1
-  maximumAttackAngle: 20
