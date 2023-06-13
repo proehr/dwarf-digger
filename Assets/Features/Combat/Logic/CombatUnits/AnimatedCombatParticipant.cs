@@ -7,6 +7,7 @@ namespace Features.Combat.Logic.CombatUnits
     public class AnimatedCombatParticipant : AbstractCombatParticipant
     {
         [SerializeField] protected internal Animator animator;
+        [SerializeField] protected internal Transform toolSlot;
         [SerializeField] protected internal CombatTool tool;
 
         protected override void Awake()
@@ -57,12 +58,18 @@ namespace Features.Combat.Logic.CombatUnits
             yield return new WaitForSeconds(tool.animationLength);
         }
 
-#if UNITY_EDITOR
-        protected void OnDrawGizmos()
+        public void SetTool(CombatTool combatToolPrefab)
         {
-            Gizmos.DrawLine(transform.position + Vector3.up * tool.hitHeight,
-                transform.position + Vector3.up * tool.hitHeight + transform.forward * tool.maxHitDistance);
+            if (tool != null)
+            {
+                Destroy(tool.gameObject);
+                tool = null;
+            }
+
+            if (combatToolPrefab != null)
+            {
+                tool = Instantiate(combatToolPrefab, toolSlot);
+            }
         }
-#endif
     }
 }

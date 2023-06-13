@@ -1,14 +1,13 @@
 ﻿using System;
 using System.Collections;
 using Common.Logic.Variables;
+using Features.PlayerControl.Logic;
+using Features.StateSwitch.Logic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
 namespace Features.Combat.Logic.CombatUnits
 {
-    using PlayerControl.Logic;
-    using StateSwitch.Logic;
-
     [RequireComponent(typeof(PlayerInput))]
     public class PlayerCombatParticipant : MovingCombatParticipant
     {
@@ -34,7 +33,7 @@ namespace Features.Combat.Logic.CombatUnits
             }
         }
 
-        private void StartAttack()
+        public void StartAttack()
         {
             if (canMove.Get() && currentAttackStats.AttackCooldown <= 0)
             {
