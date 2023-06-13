@@ -1,4 +1,5 @@
 using Common.Logic.Variables;
+using UnityEditor.UI;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.Serialization;
@@ -12,6 +13,7 @@ namespace Features.PlayerControl.Logic
         [SerializeField] private CharacterController characterController;
 
         [SerializeField] private FloatVariable playerSpeed;
+        [SerializeField] private bool isoCameraEnabled;
 
         [SerializeField] public float speedChangeRate = 100.0f;
         private Vector3 moveVector;
@@ -66,7 +68,19 @@ namespace Features.PlayerControl.Logic
         {
             Vector2 rawMoveVector = value.Get<Vector2>();
             currentSpeed = rawMoveVector == Vector2.zero ? 0.0f : playerSpeed.Get();
-            moveVector = new Vector3(rawMoveVector[0], 0, rawMoveVector[1]);
+            
+            // Different Movement if iso cam is enabled
+            // HOTFIX
+            if (isoCameraEnabled)
+            {
+                Vector3 skewedMoveVector = new Vector3(rawMoveVector[0], 0, rawMoveVector[1]);
+                Matrix4x4 isoCorrectionMatrix = Matrix4x4.Rotate(Quaternion.Euler(0, 45, 0));
+                moveVector = isoCorrectionMatrix.MultiplyPoint3x4(skewedMoveVector);
+            }
+            else
+            {
+                moveVector = new Vector3(rawMoveVector[0], 0, rawMoveVector[1]);
+            }
 
             // animationBlend = Mathf.Lerp(animationBlend, currentSpeed, Time.deltaTime * speedChangeRate);
             animationBlend = currentSpeed;
