@@ -14,4 +14,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   runtimeValue: 0
   storedValue: 0
-  onValueChanged: {fileID: 0}
+  onValueChanged: {fileID: 11400000, guid: 0aa3dea7499888b46a2f0d3ed566ce36, type: 2}

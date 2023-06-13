@@ -12,9 +12,9 @@ namespace Features.Inventory.Logic.UI
 
         internal void SetItem(InventoryItem inventoryItem)
         {
-            if (inventoryItem != null && inventoryItem.data && inventoryItem.data.Sprite)
+            if (inventoryItem != null && inventoryItem.Data && inventoryItem.Data.Sprite)
             {
-                spriteSlot.sprite = inventoryItem.data.Sprite;
+                spriteSlot.sprite = inventoryItem.Data.Sprite;
             }
 
             this.item = inventoryItem;

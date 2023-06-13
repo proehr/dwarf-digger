@@ -1,14 +1,12 @@
 ﻿using System;
 using Common.Logic.Variables;
-using StarterAssets;
+using Features.PlayerControl.Logic;
+using Features.StateSwitch.Logic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
 namespace Features.Combat.Logic.CombatUnits
 {
-    using PlayerControl.Logic;
-    using StateSwitch.Logic;
-
     [RequireComponent(typeof(PlayerInput))]
     public class PlayerCombatParticipant : MovingCombatParticipant
     {
@@ -43,7 +41,7 @@ namespace Features.Combat.Logic.CombatUnits
             }
         }
 
-        private void StartAttack()
+        public void StartAttack()
         {
             if (currentAttackStats.AttackCooldown <= 0)
             {
@@ -54,13 +52,11 @@ namespace Features.Combat.Logic.CombatUnits
 
         public void OnEnable() {
             tool.enabled = true;
-            handler.onAttack += StartAttack;
         }
 
         public void OnDisable() {
             canMove.SetTrue();
             tool.enabled = false;
-            handler.onAttack -= StartAttack;
         }
     }
 }

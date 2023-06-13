@@ -1434,6 +1434,7 @@ GameObject:
   - component: {fileID: 3990450100554274560}
   - component: {fileID: 3990450100554274561}
   - component: {fileID: 3990450100554274565}
+  - component: {fileID: 3990450100710982667}
   m_Layer: 5
   m_Name: Inventory
   m_TagString: Untagged
@@ -1562,7 +1563,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   inputHandler: {fileID: 0}
-  inventory: {fileID: 0}
+  inventory: {fileID: 11400000, guid: 32c1905069ac76147baf37063bd05139, type: 2}
   uiItemSlots:
   - {fileID: 3990450100890308818}
   - {fileID: 3990450100085847373}
@@ -1575,6 +1576,22 @@ MonoBehaviour:
   - {fileID: 3990450101008879207}
   - {fileID: 3990450100114068384}
   activeSlot: {fileID: 11400000, guid: fb7833d1b3dcbe548b4d2604b83743cd, type: 2}
+--- !u!114 &3990450100710982667
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3990450100554274575}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c847d5b63a604f548bb4d52e7647897c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  inventory: {fileID: 11400000, guid: 32c1905069ac76147baf37063bd05139, type: 2}
+  inputHandler: {fileID: 0}
+  player: {fileID: 0}
+  selectedIndex: {fileID: 11400000, guid: fb7833d1b3dcbe548b4d2604b83743cd, type: 2}
 --- !u!1 &3990450100749321071
 GameObject:
   m_ObjectHideFlags: 0

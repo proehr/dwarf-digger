@@ -1,43 +1,46 @@
 ﻿using System;
 using UnityEngine;
 
-namespace Features.Inventory.Logic {
-
+namespace Features.Inventory.Logic
+{
     [Serializable]
-    public class InventoryItem {
-    [SerializeField] public InventoryItemData data { get; }
-    [SerializeField] private int currentStackSize;
-    [SerializeField] private Interactable interaction;
-    
-    public int CurrentStackSize {
-        get => currentStackSize;
-    }
+    public class InventoryItem
+    {
+        [SerializeField] private InventoryItemData data;
+        [SerializeField] private int currentStackSize;
 
-    public bool AddToStack() {
-        if (currentStackSize >= data.MaxStackSize) return false;
-        currentStackSize++;
-        return true;
-    }
+        public InventoryItemData Data => data;
 
-    public void RemoveFromStack() {
-        currentStackSize--;
-    }
+        public int CurrentStackSize
+        {
+            get => currentStackSize;
+        }
 
-    public GameObject GetPrefab() {
-        return data.Prefab;
-    }
+        public bool AddToStack()
+        {
+            if (currentStackSize >= data.MaxStackSize) return false;
+            currentStackSize++;
+            return true;
+        }
 
-    public bool CheckName(InventoryItem item) {
-        return data.ItemName == item.data.ItemName;
-    }
+        public void RemoveFromStack()
+        {
+            currentStackSize--;
+        }
 
-    public bool CheckId(InventoryItem item) {
-        return data.Id == item.data.Id;
-    }
+        public GameObject GetPrefab()
+        {
+            return data.Prefab;
+        }
 
-    public void Interact(Transform playerTransform) {
-        interaction.Interact(this, playerTransform);
-    }
+        public bool CheckName(InventoryItem item)
+        {
+            return data.ItemName == item.data.ItemName;
+        }
 
+        public bool CheckId(InventoryItem item)
+        {
+            return data.Id == item.data.Id;
+        }
     }
 }
