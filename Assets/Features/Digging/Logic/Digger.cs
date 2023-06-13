@@ -7,6 +7,9 @@ using UnityEngine.InputSystem;
 
 namespace Features.Digging.Logic
 {
+    using System;
+    using PlayerControl.Logic;
+
     [RequireComponent(typeof(Animator))]
     public class Digger : MonoBehaviour
     {
@@ -15,6 +18,8 @@ namespace Features.Digging.Logic
         [SerializeField] private BoolVariable isDigging;
         [SerializeField] private BoolVariable canMove;
 
+        [SerializeField] private InputHandler handler;
+        
         [SerializeField] private List<DiggableObjectData> diggableObjectDatas;
         [SerializeField] private float hitDetectionDelayInSeconds;
         [SerializeField] private float maxHitDistance;
@@ -34,8 +39,9 @@ namespace Features.Digging.Logic
                 x => x);
         }
 
-        private void OnAttack(InputValue value)
+        private void StartDig()
         {
+            Debug.Log("Digging Tool on Attack");
             if (canMove.Get() && !isDigging.Get())
             {
                 animator.SetTrigger(animIdDig);
@@ -69,9 +75,11 @@ namespace Features.Digging.Logic
 
         private IEnumerator StopDig()
         {
+            Debug.Log("Stop Dig Pre Yield return");
             yield return new WaitForSeconds(digAnimationLength);
-            isDigging.Set(false);
-            canMove.Set(true);
+            Debug.Log("Stop Dig Post Yield return");
+            isDigging.SetFalse();
+            canMove.SetTrue();
         }
 
 #if UNITY_EDITOR
