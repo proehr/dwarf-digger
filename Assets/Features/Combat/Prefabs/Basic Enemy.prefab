@@ -534,7 +534,7 @@ CapsuleCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  m_Radius: 0.7
+  m_Radius: 0.5
   m_Height: 2
   m_Direction: 1
   m_Center: {x: 0, y: 1, z: 0}
@@ -566,7 +566,7 @@ NavMeshAgent:
   m_Acceleration: 8
   avoidancePriority: 50
   m_AngularSpeed: 120
-  m_StoppingDistance: 1.5
+  m_StoppingDistance: 2
   m_AutoTraverseOffMeshLink: 1
   m_AutoBraking: 1
   m_AutoRepath: 1
@@ -623,7 +623,8 @@ MonoBehaviour:
     movementCooldown: 0
   agent: {fileID: 7682000914535238152}
   target: {fileID: 0}
-  maximumAttackDistance: 1.25
+  maximumAttackDistance: 2.05
+  rotationSpeed: 0
 --- !u!1 &7682455224003145973
 GameObject:
   m_ObjectHideFlags: 0
@@ -1974,3 +1975,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   animationName: Attack (1)
   animationTriggerName: AxeAttack
+  hitDetectionDelayInSeconds: 0.249
+  maxHitDistance: 1.5
+  hitHeight: 1.25
