@@ -16,7 +16,7 @@ namespace StarterAssets
     public class ThirdPersonController : MonoBehaviour
     {
         [Header("Player")] [Tooltip("Move speed of the character in m/s")]
-        public float MoveSpeed = 2.0f;
+        public FloatReference MoveSpeed = new FloatReference(2.0f);
 
         [Tooltip("Sprint speed of the character in m/s")]
         public float SprintSpeed = 5.335f;
@@ -78,7 +78,7 @@ namespace StarterAssets
         [Tooltip("For locking the camera position on all axis")]
         public bool LockCameraX = false;
 
-        [SerializeField] private BoolVariable canMove;
+        [SerializeField] protected BoolVariable canMove;
 
         // cinemachine
         private float _cinemachineTargetYaw;

@@ -7,6 +7,9 @@ TagManager:
   - CinemachineTarget
   - DiggingTool
   - Diggable
+  - AggroHelper
+  - Item
+  - DirtDiggableObject
   layers:
   - Default
   - TransparentFX
