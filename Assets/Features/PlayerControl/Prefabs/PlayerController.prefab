@@ -469,11 +469,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 9034527168479418976, guid: 8aed7b2713fc7e649b57190072f50625, type: 3}
   m_PrefabInstance: {fileID: 8712471388661707960}
   m_PrefabAsset: {fileID: 0}
---- !u!95 &1644969774155028292 stripped
-Animator:
-  m_CorrespondingSourceObject: {fileID: 7943489763295405052, guid: 8aed7b2713fc7e649b57190072f50625, type: 3}
-  m_PrefabInstance: {fileID: 8712471388661707960}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &4624339043415881053 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 4090422170653196773, guid: 8aed7b2713fc7e649b57190072f50625, type: 3}
@@ -492,61 +487,8 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.0015, y: 0.009, z: 0.003}
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &1948923006833342554
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4624339043415881053}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: bbfb0ca0581b47a394a7dd5145b75e64, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  isDigging: {fileID: 11400000, guid: e19c673e25189d847887e667544275b6, type: 2}
 --- !u!4 &4626383876673899838 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4097392817348901254, guid: 8aed7b2713fc7e649b57190072f50625, type: 3}
-  m_PrefabInstance: {fileID: 8712471388661707960}
-  m_PrefabAsset: {fileID: 0}
---- !u!1 &5440321082476091268 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 3717455008696967996, guid: 8aed7b2713fc7e649b57190072f50625, type: 3}
-  m_PrefabInstance: {fileID: 8712471388661707960}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &8377603249649566479
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5440321082476091268}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 25657b07fe6a4643981dcbbab8c8d89e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  animator: {fileID: 1644969774155028292}
-  isDigging: {fileID: 11400000, guid: e19c673e25189d847887e667544275b6, type: 2}
-  canMove: {fileID: 11400000, guid: 42bf32237d9fd834fa311371b764702a, type: 2}
---- !u!114 &8815480477400150176
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5440321082476091268}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7536110f732cd4d1a97ec6d09399515f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  characterController: {fileID: 5440321082476091278}
-  playerSpeed: {fileID: 11400000, guid: 283cabc0412114da9bd5afb25f30d8cf, type: 2}
-  speedChangeRate: 10
---- !u!143 &5440321082476091278 stripped
-CharacterController:
-  m_CorrespondingSourceObject: {fileID: 3717455008696967990, guid: 8aed7b2713fc7e649b57190072f50625, type: 3}
   m_PrefabInstance: {fileID: 8712471388661707960}
   m_PrefabAsset: {fileID: 0}

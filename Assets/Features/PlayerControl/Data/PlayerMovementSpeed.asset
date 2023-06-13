@@ -12,6 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 05d7b30f20f4d2644a70edb1b620b762, type: 3}
   m_Name: PlayerMovementSpeed
   m_EditorClassIdentifier: 
-  runtimeValue: 3
-  storedValue: 3
+  runtimeValue: 5
+  storedValue: 5
   onValueChanged: {fileID: 0}
