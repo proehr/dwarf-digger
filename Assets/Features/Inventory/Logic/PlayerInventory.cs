@@ -20,13 +20,17 @@ namespace Features.Inventory.Logic
         {
             if (!CheckInBounds(index)) return;
             if (index < inventory.Length)
-            {
+            {                
+                Debug.Log("Select Index if");
                 inventory[index].Data.Select(player);
             }
             else
             {
+                Debug.Log("Select Index Else");
                 player.SetTool(null);
             }
+            Debug.Log("Index: " + index);
+
         }
 
         public InventoryItem GetItemAtIndex(int index)

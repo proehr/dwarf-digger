@@ -15,15 +15,6 @@
                     "initialStateCheck": true
                 },
                 {
-                    "name": "Dig",
-                    "type": "Button",
-                    "id": "465910c8-8032-4ad3-a9d4-2f911fa8b1a4",
-                    "expectedControlType": "Button",
-                    "processors": "",
-                    "interactions": "",
-                    "initialStateCheck": false
-                },
-                {
                     "name": "Look",
                     "type": "Value",
                     "id": "2690c379-f54d-45be-a724-414123833eb4",

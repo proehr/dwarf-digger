@@ -8,6 +8,7 @@ namespace Features.Inventory.Logic.InventoryItems
     {
         protected internal override void Interact(PlayerCombatParticipant player)
         {
+            //Debug.Log("Triggered combat data");
             player.StartAttack();
         }
     }

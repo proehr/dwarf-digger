@@ -5,7 +5,6 @@ namespace Features.Combat.Logic
     /**
      * Any type of weapon or tool that is used by a <see cref="AbstractCombatParticipant"/>
      */
-    [RequireComponent(typeof(Collider))]
     public abstract class CombatTool : MonoBehaviour
     {
         [SerializeField] internal string animationName;
