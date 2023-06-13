@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using Common.Logic.Variables;
 using Features.PlayerControl.Logic;
 using Features.StateSwitch.Logic;
@@ -17,15 +18,6 @@ namespace Features.Combat.Logic.CombatUnits
 
         private void Update()
         {
-            if (isAttacking)
-            {
-                canMove.SetFalse();
-            }
-            else
-            {
-                canMove.SetTrue();
-            }
-            
             if (currentAttackStats.AttackCooldown > 0)
             {
                 currentAttackStats.AttackCooldown = Math.Max(currentAttackStats.AttackCooldown - Time.deltaTime, 0);
@@ -43,20 +35,17 @@ namespace Features.Combat.Logic.CombatUnits
 
         public void StartAttack()
         {
-            if (currentAttackStats.AttackCooldown <= 0)
+            if (canMove.Get() && currentAttackStats.AttackCooldown <= 0)
             {
                 Attack();
                 canMove.SetFalse();
             }
         }
 
-        public void OnEnable() {
-            tool.enabled = true;
-        }
-
-        public void OnDisable() {
+        protected override IEnumerator StopUse()
+        {
+            yield return StartCoroutine(base.StopUse());
             canMove.SetTrue();
-            tool.enabled = false;
         }
     }
 }

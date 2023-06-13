@@ -1,4 +1,5 @@
 ﻿using System.Collections;
+using System.Collections.Generic;
 using System.Linq;
 using Common.Logic.Variables;
 using UnityEngine;
@@ -9,22 +10,33 @@ namespace Features.Digging.Logic
     using System;
     using PlayerControl.Logic;
 
+    [RequireComponent(typeof(Animator))]
     public class Digger : MonoBehaviour
     {
         [SerializeField] private Animator animator;
+
         [SerializeField] private BoolVariable isDigging;
         [SerializeField] private BoolVariable canMove;
 
         [SerializeField] private InputHandler handler;
         
+        [SerializeField] private List<DiggableObjectData> diggableObjectDatas;
+        [SerializeField] private float hitDetectionDelayInSeconds;
+        [SerializeField] private float maxHitDistance;
+        [SerializeField] private float hitHeight;
+
         private int animIdDig;
         private float digAnimationLength;
+
+        private Dictionary<string, DiggableObjectData> taggedDiggableObjectDatas = new();
 
         private void Awake()
         {
             animIdDig = Animator.StringToHash("Attack");
             digAnimationLength = animator.runtimeAnimatorController.animationClips
                 .First(clip => clip.name == "Attack (1)").length;
+            taggedDiggableObjectDatas = diggableObjectDatas.ToDictionary(x => x.assignedTag,
+                x => x);
         }
 
         private void StartDig()
@@ -32,12 +44,33 @@ namespace Features.Digging.Logic
             Debug.Log("Digging Tool on Attack");
             if (canMove.Get() && !isDigging.Get())
             {
-                Debug.Log("Digging Tool on Attack if");
-                isDigging.SetTrue();
                 animator.SetTrigger(animIdDig);
-                canMove.SetFalse();
+                canMove.Set(false);
+                StartCoroutine(CheckForHit());
                 StartCoroutine(StopDig());
             }
+        }
+
+        private IEnumerator CheckForHit()
+        {
+            yield return new WaitForSeconds(hitDetectionDelayInSeconds);
+            if (Physics.Raycast(transform.position + Vector3.up * hitHeight,
+                    transform.TransformDirection(Vector3.forward), out var hit,
+                    maxHitDistance))
+            {
+                DiggableObjectData hitObjectData = taggedDiggableObjectDatas[hit.collider.tag];
+                if (hitObjectData != null)
+                {
+                    Instantiate(hitObjectData.hitFx, hit.point, Quaternion.Inverse(transform.rotation));
+                    StartCoroutine(DestroyAfterTime(hit.collider.gameObject, hitObjectData.destructionTimeInSeconds));
+                }
+            }
+        }
+
+        protected virtual IEnumerator DestroyAfterTime(GameObject colliderGameObject, float time)
+        {
+            yield return new WaitForSeconds(time);
+            Destroy(colliderGameObject);
         }
 
         private IEnumerator StopDig()
@@ -49,14 +82,12 @@ namespace Features.Digging.Logic
             canMove.SetTrue();
         }
 
-        public void OnEnable() {
-            handler.onAttack += StartDig;
+#if UNITY_EDITOR
+        protected void OnDrawGizmos()
+        {
+            Gizmos.DrawLine(transform.position + Vector3.up * hitHeight,
+                transform.position + Vector3.up * hitHeight + transform.forward * maxHitDistance);
         }
-
-        public void OnDisable() {
-            isDigging.SetFalse();
-            canMove.SetTrue();
-            handler.onAttack -= StartDig;
-        }
+#endif
     }
 }

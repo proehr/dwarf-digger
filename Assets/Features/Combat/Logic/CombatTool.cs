@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections;
-using System.Linq;
-using UnityEngine;
+﻿using UnityEngine;
 
 namespace Features.Combat.Logic
 {
@@ -13,6 +10,10 @@ namespace Features.Combat.Logic
     {
         [SerializeField] internal string animationName;
         [SerializeField] private string animationTriggerName;
+        
+        [SerializeField] internal float hitDetectionDelayInSeconds;
+        [SerializeField] internal float maxHitDistance;
+        [SerializeField] internal float hitHeight;
 
         protected internal int animationTriggerId;
         protected internal float animationLength;

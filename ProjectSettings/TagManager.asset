@@ -9,6 +9,7 @@ TagManager:
   - Diggable
   - AggroHelper
   - Item
+  - DirtDiggableObject
   layers:
   - Default
   - TransparentFX
