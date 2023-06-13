@@ -35,11 +35,11 @@ namespace Features.Combat.Logic.CombatUnits
 
         public void StartAttack()
         {
-            if (canMove.Get() && currentAttackStats.AttackCooldown <= 0)
-            {
+            //if (currentAttackStats.AttackCooldown <= 0)
+            //{
                 Attack();
-                canMove.SetFalse();
-            }
+                // canMove.SetFalse();
+            //}
         }
 
         protected override IEnumerator StopUse()
