@@ -10,8 +10,7 @@ public class StateHandler : MonoBehaviour {
 
     [SerializeField] private PlayerCombatParticipant playerCombatComponent;
     [SerializeField]  private Digger playerDiggingComponent;
-
-    [SerializeField]  private Digger playerDiggingComponent;
+    
 
     private GameState currentGameState;
 
