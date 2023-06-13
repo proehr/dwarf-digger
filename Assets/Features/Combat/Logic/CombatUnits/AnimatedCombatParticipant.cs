@@ -31,13 +31,38 @@ namespace Features.Combat.Logic.CombatUnits
             tool.animationLength = animator.runtimeAnimatorController.animationClips
                 .First(clip => clip.name == tool.animationName).length;
             animator.SetTrigger(tool.animationTriggerId);
+            StartCoroutine(CheckForHit());
             StartCoroutine(StopUse());
+        }
+
+        private IEnumerator CheckForHit()
+        {
+            yield return new WaitForSeconds(tool.hitDetectionDelayInSeconds);
+            if (Physics.Raycast(transform.position + Vector3.up * tool.hitHeight,
+                    transform.forward,
+                    out var hit,
+                    tool.maxHitDistance
+                ))
+            {
+                AbstractCombatParticipant hitCombatParticipant = hit.collider.GetComponent<AbstractCombatParticipant>();
+                if (hitCombatParticipant != null)
+                {
+                    tool.ApplyAttackEffects(hitCombatParticipant);
+                }
+            }
         }
 
         protected virtual IEnumerator StopUse()
         {
             yield return new WaitForSeconds(tool.animationLength);
-            isAttacking = false;
         }
+
+#if UNITY_EDITOR
+        protected void OnDrawGizmos()
+        {
+            Gizmos.DrawLine(transform.position + Vector3.up * tool.hitHeight,
+                transform.position + Vector3.up * tool.hitHeight + transform.forward * tool.maxHitDistance);
+        }
+#endif
     }
 }
