@@ -7,17 +7,15 @@ using UnityEngine;
 
 public class StateHandler : MonoBehaviour {
     [SerializeField] private IntVariable enemyCount;
-
-    [SerializeField] private PlayerCombatParticipant playerCombatComponent;
-    [SerializeField]  private Digger playerDiggingComponent;
     
-
     private GameState currentGameState;
+
+    public GameState CurrentGameState {
+        get => currentGameState;
+    }
 
     public void Awake() {
         currentGameState = GameState.DIGGING;
-        playerCombatComponent.enabled = false;
-        playerDiggingComponent.enabled = true;
         enemyCount.GetChangedEvent().RegisterListener(CheckEnemyCount);
     }
 
@@ -30,12 +28,8 @@ public class StateHandler : MonoBehaviour {
         if (newState == currentGameState) return;
         switch (newState) {
             case GameState.DIGGING:
-                playerCombatComponent.enabled = false;
-                playerDiggingComponent.enabled = true;
                 break;
             case GameState.COMBAT:
-                playerCombatComponent.enabled = true;
-                playerDiggingComponent.enabled = false;
                 break;
             default:
                 break;

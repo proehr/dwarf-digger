@@ -12,5 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 084fffffd370474b86e5c3cd5aa6a240, type: 3}
   m_Name: SampleDiggableObjectData
   m_EditorClassIdentifier: 
+  assignedTag: DirtDiggableObject
   hitFx: {fileID: 8667032122431407534, guid: 061165f649d0d53409e909335f77ba49, type: 3}
   destructionTimeInSeconds: 0.05

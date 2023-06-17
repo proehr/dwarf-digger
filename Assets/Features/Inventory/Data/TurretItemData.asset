@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5471ff8e972e41c69f736f253ec0b277, type: 3}
   m_Name: TurretItemData
   m_EditorClassIdentifier: 
-  id: 0
+  id: 1
   itemName: Turret
   sprite: {fileID: 21300000, guid: 98a10a785a752d645824f309d469ef5a, type: 3}
   prefab: {fileID: 6945527973947797209, guid: 43f0294589710a74f8932417423b916a, type: 3}
