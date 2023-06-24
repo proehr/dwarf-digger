@@ -1,5 +1,4 @@
 using System;
-using System.Linq;
 using UnityEngine;
 
 namespace Features.Combat.Logic.CombatUnits
@@ -26,17 +25,17 @@ namespace Features.Combat.Logic.CombatUnits
                 currentAttackStats.AttackCooldown = Math.Max(currentAttackStats.AttackCooldown - Time.deltaTime, 0);
             }
             else if (target
-                     && Vector3.Distance(target.transform.position, transform.position) < maximumAttackDistance
+                     && Vector3.Distance(target.transform.position, transform.position) < tool.maxHitDistance
                     )
             {
-                RotateTowardsTarget();
+                /*RotateTowardsTarget();
                 RaycastHit[] hits = Physics.RaycastAll(transform.position,
                     transform.forward,
                     maximumAttackDistance);
                 if (hits.Any(hit => hit.collider.gameObject == target.gameObject))
-                {
+                {*/
                     Attack();
-                }
+                //}
             }
         }
         
@@ -46,6 +45,7 @@ namespace Features.Combat.Logic.CombatUnits
             lookRotation = Quaternion.LookRotation(direction);
             transform.rotation = Quaternion.Slerp(transform.rotation, lookRotation, Time.deltaTime * rotationSpeed);
         }
+        
     }
     
 }

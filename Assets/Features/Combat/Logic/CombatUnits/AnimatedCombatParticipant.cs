@@ -1,4 +1,5 @@
 ﻿using System.Collections;
+using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 
@@ -9,6 +10,7 @@ namespace Features.Combat.Logic.CombatUnits
         [SerializeField] protected internal Animator animator;
         [SerializeField] protected internal Transform toolSlot;
         [SerializeField] protected internal CombatTool tool;
+        [SerializeField] private float characterRadius;
 
         protected override void Awake()
         {
@@ -39,16 +41,32 @@ namespace Features.Combat.Logic.CombatUnits
         protected virtual IEnumerator CheckForHit()
         {
             yield return new WaitForSeconds(tool.hitDetectionDelayInSeconds);
-            if (Physics.Raycast(transform.position + Vector3.up * tool.hitHeight,
-                    transform.forward,
-                    out var hit,
-                    tool.maxHitDistance
-                ))
+
+            RaycastHit[] raycastHitsLeft = Physics.RaycastAll(
+                transform.position + Vector3.left * characterRadius + Vector3.up * tool.hitHeight,
+                transform.forward,
+                tool.maxHitDistance
+            );
+            RaycastHit[] raycastHits = Physics.RaycastAll(
+                transform.position + Vector3.left * characterRadius + Vector3.up * tool.hitHeight,
+                transform.forward,
+                tool.maxHitDistance
+            );
+            RaycastHit[] raycastHitsRight = Physics.RaycastAll(
+                transform.position + Vector3.right * characterRadius + Vector3.up * tool.hitHeight,
+                transform.forward, tool.maxHitDistance);
+            List<RaycastHit> hits = new();
+            hits.AddRange(raycastHitsLeft);
+            hits.AddRange(raycastHits);
+            hits.AddRange(raycastHitsRight);
+
+            foreach (RaycastHit hit in hits)
             {
                 AbstractCombatParticipant hitCombatParticipant = hit.collider.GetComponent<AbstractCombatParticipant>();
                 if (hitCombatParticipant != null)
                 {
                     tool.ApplyAttackEffects(hitCombatParticipant);
+                    break;
                 }
             }
         }
@@ -69,7 +87,22 @@ namespace Features.Combat.Logic.CombatUnits
             if (combatToolPrefab != null)
             {
                 tool = Instantiate(combatToolPrefab, toolSlot);
+                tool.user = this;
             }
         }
+
+#if UNITY_EDITOR
+        protected void OnDrawGizmos()
+        {
+            Gizmos.DrawLine(transform.position + Vector3.left * characterRadius + Vector3.up * tool.hitHeight,
+                transform.position + Vector3.left * characterRadius + Vector3.up * tool.hitHeight +
+                transform.forward * tool.maxHitDistance);
+            Gizmos.DrawLine(transform.position + Vector3.up * tool.hitHeight,
+                transform.position + Vector3.up * tool.hitHeight + transform.forward * tool.maxHitDistance);
+            Gizmos.DrawLine(transform.position + Vector3.right * characterRadius + Vector3.up * tool.hitHeight,
+                transform.position + Vector3.right * characterRadius + Vector3.up * tool.hitHeight +
+                transform.forward * tool.maxHitDistance);
+        }
+#endif
     }
 }

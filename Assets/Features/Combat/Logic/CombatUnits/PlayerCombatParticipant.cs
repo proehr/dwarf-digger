@@ -1,17 +1,15 @@
 ﻿using System;
 using System.Collections;
+using System.Collections.Generic;
+using System.Linq;
 using Common.Logic.Variables;
-using Features.PlayerControl.Logic;
+using Features.Digging.Logic;
 using Features.StateSwitch.Logic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
 namespace Features.Combat.Logic.CombatUnits
 {
-    using System.Collections.Generic;
-    using System.Linq;
-    using Digging.Logic;
-
     [RequireComponent(typeof(PlayerInput))]
     public class PlayerCombatParticipant : MovingCombatParticipant
     {
@@ -48,12 +46,9 @@ namespace Features.Combat.Logic.CombatUnits
         }
 
         protected override IEnumerator CheckForHit() {
-            Debug.Log("Player Check for Hit entered");
             if (stateHandler.CurrentGameState == GameState.COMBAT) {
-                Debug.Log("Player Check for Hit Combat entered");
                 return base.CheckForHit();
             } else {
-                Debug.Log("Player Check for Digging entered");
                 return CheckForDiggingHit();
             }
         }
@@ -95,13 +90,5 @@ namespace Features.Combat.Logic.CombatUnits
             yield return StartCoroutine(base.StopUse());
             canMove.SetTrue();
         }
-        
-#if UNITY_EDITOR
-        protected void OnDrawGizmos()
-        {
-            Gizmos.DrawLine(transform.position + Vector3.up * tool.hitHeight,
-                transform.position + Vector3.up * tool.hitHeight + transform.forward * tool.maxHitDistance);
-        }
-#endif
     }
 }
