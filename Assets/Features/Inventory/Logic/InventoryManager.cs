@@ -7,20 +7,27 @@ using UnityEngine;
 
 namespace Features.Inventory.Logic
 {
+    using UnityEngine.InputSystem;
+
     public class InventoryManager : MonoBehaviour {
         [SerializeField] private PlayerInventory inventory;
         [SerializeField] private InputHandler inputHandler;
         [SerializeField] private PlayerCombatParticipant player;
         [SerializeField] private IntVariable selectedIndex;
-    
-    
+
         private List<Collider> itemsInRange;
 
         public void Start() {
             itemsInRange = new List<Collider>();
             inputHandler.onPickUp += PickUp;
             inputHandler.onAttack += OnInteraction;
+            inputHandler.onScroll += HandleScroll;
+            inputHandler.onHotbarKey += OnHotbarKey;
             selectedIndex.GetChangedEvent().RegisterListener(OnSelectionChange);
+        }
+
+        private void OnHotbarKey(int key) {
+            selectedIndex.Set(key != 0 ? key - 1 : 9);
         }
 
         private void OnTriggerEnter(Collider other) {
@@ -65,13 +72,30 @@ namespace Features.Inventory.Logic
             WorldItem itemToPickUp = itemToPickCollider.GetComponent<WorldItem>();
             itemToPickUp.PickUp(inventory);
         }
+        
+        private void HandleScroll(InputValue inputValue)
+        {
+            float value = inputValue.Get<float>();
+            if (value > 0)
+            {
+                selectedIndex.Set(Mod(selectedIndex.Get() - 1, inventory.MaxInventorySize));
+            }
+            else if (value < 0)
+            {
+                selectedIndex.Set(Mod(selectedIndex.Get() + 1, inventory.MaxInventorySize));
+            }
+        }
+        
+        private int Mod(int x, int m) {
+            return (x%m + m)%m;
+        }
 
         private void OnDestroy() {
             inputHandler.onPickUp -= PickUp;
             inputHandler.onInventoryInteraction -= OnInteraction;
 
         }
-    
+
         private void OnDisable() {
             inputHandler.onPickUp -= PickUp;
             inputHandler.onInventoryInteraction -= OnInteraction;

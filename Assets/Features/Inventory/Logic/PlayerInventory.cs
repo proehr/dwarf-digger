@@ -11,6 +11,10 @@ namespace Features.Inventory.Logic
         [SerializeField] private int maxInventorySize;
         [SerializeField] internal InventoryItem[] inventory;
 
+        public int MaxInventorySize {
+            get => maxInventorySize;
+        }
+
         public void UseSelectedIndex(int index, PlayerCombatParticipant player)
         {
             inventory[index].Data.Interact(player);
