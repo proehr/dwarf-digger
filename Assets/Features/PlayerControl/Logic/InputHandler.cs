@@ -10,7 +10,6 @@ namespace Features.PlayerControl.Logic {
         public Action onInventoryInteraction;
         
         public void OnAttack(InputValue value) {
-            Debug.Log("On Attack Entered");
             this.onAttack?.Invoke();
         }
 

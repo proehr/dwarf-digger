@@ -804,8 +804,8 @@ CharacterController:
   serializedVersion: 2
   m_Height: 1.4
   m_Radius: 0.3
-  m_SlopeLimit: 45
-  m_StepOffset: 0.25
+  m_SlopeLimit: 0
+  m_StepOffset: 0
   m_SkinWidth: 0.02
   m_MinMoveDistance: 0
   m_Center: {x: 0, y: 0.7, z: 0}
@@ -973,6 +973,7 @@ MonoBehaviour:
   animator: {fileID: 7943489763295405052}
   toolSlot: {fileID: 4094089747004544093}
   tool: {fileID: 2135717947856503632}
+  characterRadius: 0.3
   initialMovementStats:
     maximumMovementSpeed:
       value: 10
