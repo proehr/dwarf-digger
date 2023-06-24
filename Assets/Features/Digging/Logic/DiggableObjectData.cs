@@ -3,8 +3,8 @@ using UnityEngine;
 
 namespace Features.Digging.Logic
 {
-    [Serializable]
-    public class DiggableObjectData
+    [CreateAssetMenu(fileName = "DiggableObjectData", menuName = "Features/Digging/DiggableObjectData")]
+    public class DiggableObjectData : ScriptableObject
     {
         public string assignedTag;
         public GameObject hitFx;

@@ -15,6 +15,6 @@ MonoBehaviour:
   maxInventorySize: 10
   inventory:
   - data: {fileID: 11400000, guid: d460f154c320bc14598c4acc3f8dcc85, type: 2}
-    currentStackSize: 1
+    currentStackSize: 0
   - data: {fileID: 11400000, guid: 66d7b55a240ebf547988eb273ce1c372, type: 2}
-    currentStackSize: 8
+    currentStackSize: 0

@@ -744,7 +744,6 @@ GameObject:
   - component: {fileID: 3717455008696967990}
   - component: {fileID: 3717455008696967984}
   - component: {fileID: 8348446968101087091}
-  - component: {fileID: 8377603249649566479}
   - component: {fileID: 8815480477400150176}
   - component: {fileID: 1583603725}
   m_Layer: 8
@@ -920,26 +919,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4b859daaed6ee8742b9bb461cfbcdf2d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &8377603249649566479
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3717455008696967996}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 25657b07fe6a4643981dcbbab8c8d89e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  animator: {fileID: 7943489763295405052}
-  isDigging: {fileID: 11400000, guid: e19c673e25189d847887e667544275b6, type: 2}
-  canMove: {fileID: 11400000, guid: 42bf32237d9fd834fa311371b764702a, type: 2}
-  handler: {fileID: 0}
-  diggableObjectDatas: []
-  hitDetectionDelayInSeconds: 0
-  maxHitDistance: 0
-  hitHeight: 0
 --- !u!114 &8815480477400150176
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -954,6 +933,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   characterController: {fileID: 3717455008696967990}
   playerSpeed: {fileID: 11400000, guid: 283cabc0412114da9bd5afb25f30d8cf, type: 2}
+  isoCameraEnabled: 0
   speedChangeRate: 100
 --- !u!114 &1583603725
 MonoBehaviour:
@@ -1004,7 +984,8 @@ MonoBehaviour:
       valueVariable: {fileID: 0}
     movementCooldown: 0
   canMove: {fileID: 11400000, guid: 42bf32237d9fd834fa311371b764702a, type: 2}
-  handler: {fileID: 8348446968101087091}
+  stateHandler: {fileID: 0}
+  diggableObjectDatas: []
 --- !u!1 &3748249831729231746
 GameObject:
   m_ObjectHideFlags: 0

@@ -12,6 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d60f261b718a448d960f65fcea8d2f82, type: 3}
   m_Name: enemyCount
   m_EditorClassIdentifier: 
-  runtimeValue: 0
+  runtimeValue: 1
   storedValue: 0
-  onValueChanged: {fileID: 11400000, guid: e7c11dce7f2fdd0498520a6ab8bfbd99, type: 2}
+  onValueChanged: {fileID: 11400000, guid: b6292b4e16f55c64980b3d46c02d8961, type: 2}

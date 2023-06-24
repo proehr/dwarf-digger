@@ -36,7 +36,7 @@ namespace Features.Combat.Logic.CombatUnits
             StartCoroutine(StopUse());
         }
 
-        private IEnumerator CheckForHit()
+        protected virtual IEnumerator CheckForHit()
         {
             yield return new WaitForSeconds(tool.hitDetectionDelayInSeconds);
             if (Physics.Raycast(transform.position + Vector3.up * tool.hitHeight,

@@ -14,5 +14,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   spawnableEnemies:
   - Name: Enemy
-    Enemy: {fileID: 7682449631911809265, guid: d532f330d0e33d54ab702a6c4ea85ada, type: 3}
+    Enemy: {fileID: 7682000914535238151, guid: d532f330d0e33d54ab702a6c4ea85ada, type: 3}
     SoundClip: {fileID: 0}

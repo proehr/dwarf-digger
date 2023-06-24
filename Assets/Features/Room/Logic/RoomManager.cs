@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using Common.Logic.Variables;
 using Features.Combat.Logic;
+using Features.Combat.Logic.CombatUnits;
 using Features.Digging.Logic;
 using Features.Room.Logic;
 using MyBox;
@@ -18,6 +19,7 @@ public class RoomManager : MonoBehaviour {
     [SerializeField] private SpawningHelper spawningHelper;
     [SerializeField] private IntVariable globalEnemyCount;
     [SerializeField] private int enemyCount;
+    [SerializeField] private PlayerCombatParticipant player;
 
     private int radius;
 
@@ -41,19 +43,20 @@ public class RoomManager : MonoBehaviour {
     }
 
     private void SpawnEnemiesInRoom() {
-        GameObject enemyToSpawn = spawningHelper.GetEnemy(enemyName);
-        if (enemyToSpawn != null && enemyToSpawn.HasComponent<AbstractCombatParticipant>()) {
+        Enemy enemyToSpawn = spawningHelper.GetEnemy(enemyName);
+        if (enemyToSpawn != null) {
             for (int i = 0; i < enemyCount; i++) {
                 Vector3 pos = Random.insideUnitSphere * radius;
                 Vector3 transformPos = transform.position;
                 Vector3 adjustedPos = new Vector3(pos.x + transformPos.x, 0, pos.z + transformPos.z);
-                GameObject spawnedEnemy = Instantiate(enemyToSpawn, adjustedPos, Quaternion.identity, transform);
+                Enemy spawnedEnemy = Instantiate(enemyToSpawn, adjustedPos, Quaternion.identity, transform);
+                globalEnemyCount.Add(1);
                 
                 Debug.Log("Spawned Enemy Pos: " + spawnedEnemy.transform.position);
                 Debug.Log("Radius Pos: " + pos);
-
-                AbstractCombatParticipant combatParticipant = spawnedEnemy.GetComponent<AbstractCombatParticipant>();
-                combatParticipant.deathListeners += OnEnemyDespawn;
+                
+                spawnedEnemy.SetTarget(player);
+                spawnedEnemy.deathListeners += OnEnemyDespawn;
             }
         }
         Deregister();
