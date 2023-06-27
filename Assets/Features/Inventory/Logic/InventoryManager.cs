@@ -32,12 +32,14 @@ namespace Features.Inventory.Logic
 
         private void OnTriggerEnter(Collider other) {
             if (other.tag.Equals("Item") && !itemsInRange.Contains(other)) {
+                Debug.Log("Added to List");
                 itemsInRange.Add(other);
             }
         }
 
         private void OnTriggerExit(Collider other) {
             if (other.tag.Equals("Item")) {
+                Debug.Log("Remove from List");
                 itemsInRange.Remove(other);
             }
         }
@@ -57,7 +59,7 @@ namespace Features.Inventory.Logic
         
             foreach (Collider currentItem in itemsInRange) {
                 float currentDistance = Vector3.Distance(this.transform.position, currentItem.transform.position);
-            
+                Debug.Log("Distance to Item: " + currentDistance + ", Item: " + currentItem.name);
                 if (currentDistance < nearestDistance) {
                     nearestDistance = currentDistance;
                     nearestItem = currentItem;
@@ -71,6 +73,7 @@ namespace Features.Inventory.Logic
             Collider itemToPickCollider = GetClosestItem();
             WorldItem itemToPickUp = itemToPickCollider.GetComponent<WorldItem>();
             itemToPickUp.PickUp(inventory);
+            itemsInRange.Remove(itemToPickCollider);
         }
         
         private void HandleScroll(InputValue inputValue)

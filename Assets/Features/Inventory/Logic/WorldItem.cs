@@ -7,7 +7,7 @@ namespace Features.Inventory.Logic
         
         public void PickUp(PlayerInventory inventory) {
             if (inventory.AddItemToInventory(inventoryItem)) {
-                Destroy(this);
+                Destroy(gameObject);
             }
         }
     }
