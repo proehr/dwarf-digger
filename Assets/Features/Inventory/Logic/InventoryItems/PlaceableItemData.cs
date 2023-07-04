@@ -9,7 +9,16 @@ namespace Features.Inventory.Logic.InventoryItems
         protected internal override void Interact(PlayerCombatParticipant player)
         {
             var playerTransform = player.transform;
-            Instantiate(prefab, playerTransform.position + (playerTransform.forward * 2), Quaternion.identity);
+            RaycastHit[] raycastHits = Physics.RaycastAll(
+                playerTransform.position + Vector3.up * 1,
+                playerTransform.forward,
+                2
+            );
+            if (raycastHits.Length > 0)
+            {
+                return;
+            }
+            Instantiate(prefab, playerTransform.position + (playerTransform.forward * 2), playerTransform.rotation);
         }
     }
 }
