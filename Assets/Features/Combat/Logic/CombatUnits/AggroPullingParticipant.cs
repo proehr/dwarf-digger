@@ -19,10 +19,12 @@ namespace Features.Combat.Logic.CombatUnits
         [SerializeField] private float hitDetectionRange;
         [SerializeField] internal float aggroRange;
         [SerializeField] private float rotationSpeed;
+        [SerializeField] private AudioClip attackFx;
 
         internal List<AbstractCombatParticipant> targets = new();
         private Vector3 direction;
         private Quaternion lookRotation;
+        
 
         protected void Update()
         {
@@ -51,6 +53,8 @@ namespace Features.Combat.Logic.CombatUnits
         protected override void Attack()
         {
             base.Attack();
+            audioSource.clip = attackFx;
+            audioSource.Play();
             direction = (targets[0].transform.position - transform.position).normalized;
             lookRotation = Quaternion.LookRotation(direction);
             GameObject projectile = Instantiate(
