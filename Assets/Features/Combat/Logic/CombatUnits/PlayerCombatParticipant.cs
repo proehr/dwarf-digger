@@ -16,6 +16,7 @@ namespace Features.Combat.Logic.CombatUnits
         [SerializeField] private BoolVariable canMove;
         [SerializeField] private StateHandler stateHandler;
         [SerializeField] private List<DiggableObjectData> diggableObjectDatas;
+        [SerializeField] private AudioClip hitFx;
         
         private Dictionary<string, DiggableObjectData> taggedDiggableObjectDatas = new();
 
@@ -26,6 +27,13 @@ namespace Features.Combat.Logic.CombatUnits
             base.Awake();
             taggedDiggableObjectDatas = diggableObjectDatas.ToDictionary(x => x.assignedTag,
                 x => x);
+        }
+
+        protected internal override void ReceiveDamage(int amount)
+        {
+            base.ReceiveDamage(amount);
+            audioSource.clip = hitFx;
+            audioSource.Play();
         }
 
         private void Update()

@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
+using Random = System.Random;
 
 namespace Features.Combat.Logic
 {
@@ -16,6 +18,8 @@ namespace Features.Combat.Logic
         [SerializeField] protected internal HealthStats currentHealthStats;
 
         protected internal Action<AbstractCombatParticipant> deathListeners;
+        [SerializeField] private List<AudioClip> deathSounds;
+        [SerializeField] protected AudioSource audioSource;
 
         protected virtual void Awake()
         {
@@ -48,6 +52,22 @@ namespace Features.Combat.Logic
         protected virtual void HandleDeath(AbstractCombatParticipant killer)
         {
             deathListeners?.Invoke(this);
+            if (deathSounds.Count > 0)
+            {
+                audioSource.clip = deathSounds[new Random().Next(deathSounds.Count)];
+                audioSource.Play();
+                ApplyAttackCooldown(audioSource.clip.length);
+                StartCoroutine(DestroyParticipant(1));
+            }
+            else
+            {
+                Destroy(gameObject);
+            }
+        }
+
+        private IEnumerator DestroyParticipant(float clipLength)
+        {
+            yield return new WaitForSeconds(clipLength);
             Destroy(gameObject);
         }
 
