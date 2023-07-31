@@ -48,7 +48,7 @@ namespace Features.Combat.Logic.CombatUnits
                 tool.maxHitDistance
             );
             RaycastHit[] raycastHits = Physics.RaycastAll(
-                transform.position + Vector3.left * characterRadius + Vector3.up * tool.hitHeight,
+                transform.position + Vector3.up * tool.hitHeight,
                 transform.forward,
                 tool.maxHitDistance
             );

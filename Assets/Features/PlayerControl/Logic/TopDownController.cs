@@ -1,8 +1,7 @@
 using Common.Logic.Variables;
-using UnityEditor.UI;
 using UnityEngine;
 using UnityEngine.InputSystem;
-using UnityEngine.Serialization;
+using UnityEngine.InputSystem.Controls;
 
 namespace Features.PlayerControl.Logic
 {
@@ -58,6 +57,27 @@ namespace Features.PlayerControl.Logic
             {
                 transform.forward = moveVector;
             }
+            else
+            {
+                //Get the Screen positions of the object
+                Vector2 positionOnScreen = Camera.main.WorldToViewportPoint(transform.position + Vector3.up * 0.7f);
+
+                //Get the Screen position of the mouse
+                Vector2Control currentPosition = Mouse.current.position;
+                Vector2 mouseOnScreen = Camera.main.ScreenToViewportPoint(new Vector3(currentPosition.x.ReadValue(),
+                    currentPosition.y.ReadValue(), 0f
+                ));
+
+                //Get the angle between the points
+                float angle = AngleBetweenTwoPoints(positionOnScreen, mouseOnScreen);
+
+                transform.rotation = Quaternion.Euler(new Vector3(0f, -angle - 45, 0f));
+            }
+        }
+
+        float AngleBetweenTwoPoints(Vector3 a, Vector3 b)
+        {
+            return Mathf.Atan2(a.y - b.y, a.x - b.x) * Mathf.Rad2Deg;
         }
 
         private void OnFootstep(AnimationEvent animationEvent)
@@ -68,7 +88,7 @@ namespace Features.PlayerControl.Logic
         {
             Vector2 rawMoveVector = value.Get<Vector2>();
             currentSpeed = rawMoveVector == Vector2.zero ? 0.0f : playerSpeed.Get();
-            
+
             // Different Movement if iso cam is enabled
             // HOTFIX
             if (isoCameraEnabled)
