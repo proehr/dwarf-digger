@@ -1,0 +1,18 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 751167f6e3424fa5828c292c54ba4f46, type: 3}
+  m_Name: SpawningHelper
+  m_EditorClassIdentifier: 
+  spawnableEnemies:
+  - Name: Enemy
+    Enemy: {fileID: 7682000914535238151, guid: d532f330d0e33d54ab702a6c4ea85ada, type: 3}
+    SoundClip: {fileID: 0}
