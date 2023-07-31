@@ -826,6 +826,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 5332695305517897220}
     m_Modifications:
+    - target: {fileID: 559005289284508259, guid: fab67986cf3d08f468b8154a2e985a6b, type: 3}
+      propertyPath: ShapeModule.radius.value
+      value: 1.97
+      objectReference: {fileID: 0}
+    - target: {fileID: 559005289284508259, guid: fab67986cf3d08f468b8154a2e985a6b, type: 3}
+      propertyPath: InitialModule.startSize.scalar
+      value: 1.82
+      objectReference: {fileID: 0}
     - target: {fileID: 1488267502572579315, guid: fab67986cf3d08f468b8154a2e985a6b, type: 3}
       propertyPath: m_Name
       value: Black Smoke Effect
