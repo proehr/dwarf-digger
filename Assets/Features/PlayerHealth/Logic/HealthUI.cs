@@ -1,7 +1,6 @@
-using System;
-using System.Collections;
 using System.Collections.Generic;
 using Common.Logic.Variables;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -11,6 +10,7 @@ public class HealthUI : MonoBehaviour {
     [SerializeField] private Image healthDisplayPrefab;
     [SerializeField] private Sprite fullHealthSprite;
     [SerializeField] private Sprite emptyHealthSprite;
+    [SerializeField] private TMP_Text deathMessage;
 
     private List<Image> displayedIcons;
 
@@ -30,6 +30,11 @@ public class HealthUI : MonoBehaviour {
 
         for (int i = currentHealth.Get(); i < maxHealth.Get(); i++) {
             displayedIcons[i].sprite = emptyHealthSprite;
+        }
+
+        if (currentHealth.Get() <= 0)
+        {
+            deathMessage.gameObject.SetActive(true);
         }
     }
 }
