@@ -216,7 +216,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 5
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 139.328, y: -17.421997, z: 16.893997}
 --- !u!114 &103678737
 MonoBehaviour:
@@ -334,7 +334,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 6
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &670135643
 PrefabInstance:
@@ -393,6 +393,63 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1573dec0324594e4b823c69b4b1581ac, type: 3}
+--- !u!1001 &1305960236
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 4989142208035940338, guid: 53974c7fdb5d72d42a7bf938aba24630, type: 3}
+      propertyPath: m_RootOrder
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4989142208035940338, guid: 53974c7fdb5d72d42a7bf938aba24630, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -2.2276552
+      objectReference: {fileID: 0}
+    - target: {fileID: 4989142208035940338, guid: 53974c7fdb5d72d42a7bf938aba24630, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4989142208035940338, guid: 53974c7fdb5d72d42a7bf938aba24630, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0.6815959
+      objectReference: {fileID: 0}
+    - target: {fileID: 4989142208035940338, guid: 53974c7fdb5d72d42a7bf938aba24630, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4989142208035940338, guid: 53974c7fdb5d72d42a7bf938aba24630, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4989142208035940338, guid: 53974c7fdb5d72d42a7bf938aba24630, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4989142208035940338, guid: 53974c7fdb5d72d42a7bf938aba24630, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4989142208035940338, guid: 53974c7fdb5d72d42a7bf938aba24630, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4989142208035940338, guid: 53974c7fdb5d72d42a7bf938aba24630, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4989142208035940338, guid: 53974c7fdb5d72d42a7bf938aba24630, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5654039306756668744, guid: 53974c7fdb5d72d42a7bf938aba24630, type: 3}
+      propertyPath: m_Name
+      value: Enemie Prefab
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 53974c7fdb5d72d42a7bf938aba24630, type: 3}
 --- !u!1 &1557437429
 GameObject:
   m_ObjectHideFlags: 0
@@ -642,15 +699,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1777755399990849063, guid: b8f656b937571ad4dafad89b7ebea401, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -2.2821133
+      value: -2
       objectReference: {fileID: 0}
     - target: {fileID: 1777755399990849063, guid: b8f656b937571ad4dafad89b7ebea401, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.09739208
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1777755399990849063, guid: b8f656b937571ad4dafad89b7ebea401, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -2.174382
+      value: -2
       objectReference: {fileID: 0}
     - target: {fileID: 1777755399990849063, guid: b8f656b937571ad4dafad89b7ebea401, type: 3}
       propertyPath: m_LocalRotation.w
