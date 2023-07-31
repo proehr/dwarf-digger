@@ -1,10 +1,8 @@
-using System;
-using System.Collections;
 using System.Collections.Generic;
 using Common.Logic.Variables;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
-using TMPro;
 
 public class HealthUI : MonoBehaviour {
     [SerializeField] private IntVariable maxHealth;
@@ -36,7 +34,7 @@ public class HealthUI : MonoBehaviour {
 
         if (currentHealth.Get() <= 0)
         {
-            deathMessage.enabled = true;
+            deathMessage.gameObject.SetActive(true);
         }
     }
 }
