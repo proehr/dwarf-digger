@@ -3,8 +3,6 @@ using Features.Combat.Logic;
 using Features.Combat.Logic.CombatUnits;
 using Features.Room.Logic;
 using UnityEngine;
-using UnityEngine.AI;
-using NavMeshBuilder = UnityEditor.AI.NavMeshBuilder;
 
 public class RoomManager : MonoBehaviour
 {
@@ -44,11 +42,6 @@ public class RoomManager : MonoBehaviour
             }
             hasBeenOpened = true;
         }
-    }
-
-    private void RebakeNavMesh() {
-        NavMeshBuilder.ClearAllNavMeshes();
-        NavMeshBuilder.BuildNavMesh();
     }
 
 

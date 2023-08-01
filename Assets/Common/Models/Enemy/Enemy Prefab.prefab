@@ -1,5 +1,54 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &2962688767133746462
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 5801506455812792336}
+  - component: {fileID: 731363365075735162}
+  m_Layer: 0
+  m_Name: Weapon
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &5801506455812792336
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2962688767133746462}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 6331670319256180256}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &731363365075735162
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2962688767133746462}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c598d7cbd63e4ccf816fb7395dce0460, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  animationName: Zombie Schelle
+  animationTriggerName: AxeAttack
+  hitDetectionDelayInSeconds: 0.249
+  maxHitDistance: 1.55
+  hitHeight: 1
 --- !u!1 &5654039306756668744
 GameObject:
   m_ObjectHideFlags: 0
@@ -112,7 +161,7 @@ MonoBehaviour:
   audioSource: {fileID: 1313007407560681896}
   animator: {fileID: 6194764556347111422}
   toolSlot: {fileID: 0}
-  tool: {fileID: 1082642658531606390}
+  tool: {fileID: 731363365075735162}
   characterRadius: 0.25
   initialMovementStats:
     maximumMovementSpeed:
@@ -906,71 +955,3 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 1918110132115502600, guid: fab67986cf3d08f468b8154a2e985a6b, type: 3}
   m_PrefabInstance: {fileID: 8503915157948978528}
   m_PrefabAsset: {fileID: 0}
---- !u!1001 &8917746501940566407
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    m_TransformParent: {fileID: 6331670319256180256}
-    m_Modifications:
-    - target: {fileID: 6454499749934941597, guid: 5c266243bdd7a6a4c8d069957f6bff9f, type: 3}
-      propertyPath: m_Name
-      value: PP_Axe_Used_07_Iron
-      objectReference: {fileID: 0}
-    - target: {fileID: 6454499749935438269, guid: 5c266243bdd7a6a4c8d069957f6bff9f, type: 3}
-      propertyPath: m_RootOrder
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 6454499749935438269, guid: 5c266243bdd7a6a4c8d069957f6bff9f, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: -0.145
-      objectReference: {fileID: 0}
-    - target: {fileID: 6454499749935438269, guid: 5c266243bdd7a6a4c8d069957f6bff9f, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 0.253
-      objectReference: {fileID: 0}
-    - target: {fileID: 6454499749935438269, guid: 5c266243bdd7a6a4c8d069957f6bff9f, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: -0.006
-      objectReference: {fileID: 0}
-    - target: {fileID: 6454499749935438269, guid: 5c266243bdd7a6a4c8d069957f6bff9f, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 0.47145128
-      objectReference: {fileID: 0}
-    - target: {fileID: 6454499749935438269, guid: 5c266243bdd7a6a4c8d069957f6bff9f, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: -0.5038793
-      objectReference: {fileID: 0}
-    - target: {fileID: 6454499749935438269, guid: 5c266243bdd7a6a4c8d069957f6bff9f, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0.7228663
-      objectReference: {fileID: 0}
-    - target: {fileID: 6454499749935438269, guid: 5c266243bdd7a6a4c8d069957f6bff9f, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: -0.03610745
-      objectReference: {fileID: 0}
-    - target: {fileID: 6454499749935438269, guid: 5c266243bdd7a6a4c8d069957f6bff9f, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: -25.018
-      objectReference: {fileID: 0}
-    - target: {fileID: 6454499749935438269, guid: 5c266243bdd7a6a4c8d069957f6bff9f, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 127.597
-      objectReference: {fileID: 0}
-    - target: {fileID: 6454499749935438269, guid: 5c266243bdd7a6a4c8d069957f6bff9f, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: -57.296
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: 5c266243bdd7a6a4c8d069957f6bff9f, type: 3}
---- !u!114 &1082642658531606390 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 8413958799472436977, guid: 5c266243bdd7a6a4c8d069957f6bff9f, type: 3}
-  m_PrefabInstance: {fileID: 8917746501940566407}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c598d7cbd63e4ccf816fb7395dce0460, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 

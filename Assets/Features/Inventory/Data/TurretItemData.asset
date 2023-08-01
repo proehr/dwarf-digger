@@ -15,5 +15,5 @@ MonoBehaviour:
   id: 1
   itemName: Turret
   sprite: {fileID: 21300000, guid: 98a10a785a752d645824f309d469ef5a, type: 3}
-  prefab: {fileID: 6945527973947797209, guid: 43f0294589710a74f8932417423b916a, type: 3}
+  prefab: {fileID: 1716643026996556362, guid: 26521e5c2a3ebf2419ee70252e0f3348, type: 3}
   maxStackSize: 9
