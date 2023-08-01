@@ -109,7 +109,7 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 7b6ebd738c9b9d04faf0291cbc556b68, type: 3}
   - {fileID: 8300000, guid: b2e7530b9b385484d8dfe8eb65551166, type: 3}
   - {fileID: 8300000, guid: 5cce96c4a076ff64eb6bccd057c38746, type: 3}
-  audioSource: {fileID: 1386415184017282418, guid: d532f330d0e33d54ab702a6c4ea85ada, type: 3}
+  audioSource: {fileID: 1313007407560681896}
   animator: {fileID: 6194764556347111422}
   toolSlot: {fileID: 0}
   tool: {fileID: 1082642658531606390}
@@ -233,11 +233,11 @@ Animator:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5654039306756668744}
   m_Enabled: 0
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 0}
+  m_Avatar: {fileID: 9000000, guid: 48768c138aaa1a843b1004c1a40f2d12, type: 3}
+  m_Controller: {fileID: 9100000, guid: 1f0b1806432853441a888218c5974fd5, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
-  m_ApplyRootMotion: 0
+  m_ApplyRootMotion: 1
   m_LinearVelocityBlending: 0
   m_StabilizeFeet: 0
   m_WarningMessage: 
