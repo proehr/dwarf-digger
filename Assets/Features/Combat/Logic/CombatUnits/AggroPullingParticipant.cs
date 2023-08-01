@@ -7,7 +7,6 @@ using UnityEngine;
 
 namespace Features.Combat.Logic.CombatUnits
 {
-    
     // TODO: Physics.IgnoreCollision on instantiation by other combat participant
     // TODO: Move turret/projectile logic out
     public class AggroPullingParticipant : AbstractCombatParticipant
@@ -20,11 +19,19 @@ namespace Features.Combat.Logic.CombatUnits
         [SerializeField] internal float aggroRange;
         [SerializeField] private float rotationSpeed;
         [SerializeField] private AudioClip attackFx;
+        [SerializeField] private Animator animator;
 
         internal List<AbstractCombatParticipant> targets = new();
         private Vector3 direction;
         private Quaternion lookRotation;
-        
+        private int animationTriggerId;
+
+        protected override void Awake()
+        {
+            base.Awake();
+            animationTriggerId = Animator.StringToHash("Shoot");
+        }
+
 
         protected void Update()
         {
@@ -53,12 +60,16 @@ namespace Features.Combat.Logic.CombatUnits
         protected override void Attack()
         {
             base.Attack();
+            Debug.Log("Turret attacks");
             audioSource.clip = attackFx;
             audioSource.Play();
+            
+            animator.SetTrigger(animationTriggerId);
+            
             direction = (targets[0].transform.position - transform.position).normalized;
             lookRotation = Quaternion.LookRotation(direction);
             GameObject projectile = Instantiate(
-                projectilePrefab, 
+                projectilePrefab,
                 projectileLaunchOrigin.transform.position,
                 lookRotation
             );
@@ -73,6 +84,7 @@ namespace Features.Combat.Logic.CombatUnits
                 CheckForHit(projectile);
                 yield return null;
             }
+
             Destroy(projectile);
         }
 
@@ -95,6 +107,7 @@ namespace Features.Combat.Logic.CombatUnits
         {
             if (targets.Count > 0)
             {
+                Debug.Log("Turning towards target");
                 direction = (targets[0].transform.position - transform.position).normalized;
                 lookRotation = Quaternion.LookRotation(direction);
                 transform.rotation = Quaternion.Slerp(transform.rotation, lookRotation, Time.deltaTime * rotationSpeed);

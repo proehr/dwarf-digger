@@ -63,7 +63,7 @@ namespace Features.Combat.Logic.CombatUnits
             foreach (RaycastHit hit in hits)
             {
                 AbstractCombatParticipant hitCombatParticipant = hit.collider.GetComponent<AbstractCombatParticipant>();
-                if (hitCombatParticipant != null)
+                if (hitCombatParticipant != null && hitCombatParticipant.combatantGroup != combatantGroup)
                 {
                     tool.ApplyAttackEffects(hitCombatParticipant);
                     break;

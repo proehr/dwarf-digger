@@ -40,6 +40,7 @@ namespace Features.Combat.Logic.CombatUnits
             if (abstractCombatParticipant.combatantGroup != pullingParticipant.combatantGroup)
             {
                 pullingParticipant.targets.Add(abstractCombatParticipant);
+                Debug.Log("Target added to turret");
                 abstractCombatParticipant.deathListeners += RemoveTarget;
                 NavMeshCombatParticipant navMeshCombatParticipant = abstractCombatParticipant as NavMeshCombatParticipant;
                 if (navMeshCombatParticipant && navMeshCombatParticipant.target == navMeshCombatParticipant.initialTarget)
