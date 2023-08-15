@@ -1,6 +1,7 @@
 # Dwarf Digger
 
-A dwarf gambled away and paid with his life, his dwarf girlfriend starts digging to revive him.
+Dwarf Digger is a top down strategy roguelike where you dig yourself towards the rooms full of monsters and loot.
+You are playing the briliant dwarven inventor Amethystia, who faces the mysteries of the mountain with courage and wit.
 
 ## Built With
 
